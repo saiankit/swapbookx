@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Sidebar() {
   return (
@@ -7,10 +7,10 @@ function Sidebar() {
         <div className="px-8">
           <div className="h-16 w-full flex items-center">
             <svg
-              width="192"
+              fill="none"
               height="36"
               viewBox="0 0 192 36"
-              fill="none"
+              width="192"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -31,25 +31,25 @@ function Sidebar() {
             <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
               <div className="flex items-center">
                 <svg
-                  width="24"
+                  fill="none"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M7 17L17 7"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M7 7H17V17"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                 </svg>
                 <span className="text-md  ml-2">Lender Dashboard</span>
@@ -58,25 +58,25 @@ function Sidebar() {
             <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
               <div className="flex items-center">
                 <svg
-                  width="24"
+                  fill="none"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M17 7L7 17"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M17 17H7V7"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                 </svg>
 
@@ -86,46 +86,46 @@ function Sidebar() {
             <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
               <div className="flex items-center">
                 <svg
-                  width="24"
+                  fill="none"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M12 2L22 8.5V15.5L12 22L2 15.5V8.5L12 2Z"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M12 22V15.5"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M22 8.5L12 15.5L2 8.5"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M2 15.5L12 8.5L22 15.5"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M12 2V8.5"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                 </svg>
 
@@ -135,53 +135,53 @@ function Sidebar() {
             <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
               <div className="flex items-center">
                 <svg
-                  width="24"
+                  fill="none"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M8 6H21"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M8 12H21"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M8 18H21"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M3 6H3.01"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M3 12H3.01"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     d="M3 18H3.01"
                     stroke="#667080"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                 </svg>
 
@@ -192,7 +192,7 @@ function Sidebar() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

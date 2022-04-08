@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function BorrowerDashboard() {
   return (
@@ -6,7 +6,7 @@ function BorrowerDashboard() {
       <h1 className="text-4xl mb-5 font-bold">BorrowerDashboard</h1>
       <span className="text-7xl">📞</span>
     </div>
-  );
+  )
 }
 
-export default BorrowerDashboard;
+export default BorrowerDashboard
