@@ -10,6 +10,8 @@ import RequestsDashboard from './pages/requests'
 import TransactionsDashboard from './pages/transactions'
 import HomeScreen from './pages/home'
 import Sidebar from './components/sidebar.jsx'
+import AddBook from './pages/addBook'
+import ConfirmBook from './pages/confirmBook'
 export default function App() {
   return (
     <>
@@ -20,6 +22,8 @@ export default function App() {
           <Route element={<LenderDashboard />} path="/lender" />
           <Route element={<BorrowerDashboard />} path="/borrower" />
           <Route element={<RequestsDashboard />} path="/requests" />
+          <Route element={<AddBook />} path="/lender/addBook" />
+          <Route element={<ConfirmBook />} path="/lender/confirmBook" />
           <Route element={<TransactionsDashboard />} path="/transactions" />
         </Routes>
       </div>
