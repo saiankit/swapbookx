@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.swapbookx.api.payloads.UserDto;
 
-
-
 public interface UserService {
     UserDto createUser(UserDto user);
     UserDto updateUser(UserDto user, Integer userID);

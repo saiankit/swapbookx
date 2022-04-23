@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Sidebar() {
   return (
     <div className="flex flex-no-wrap h-screen">
-      <div className="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between sm:flex">
+      <div className="w-64 absolute sm:relative bg-light shadow md:h-full flex-col justify-between sm:flex">
         <div className="px-8">
           <div className="h-16 w-full flex items-center">
             <svg
