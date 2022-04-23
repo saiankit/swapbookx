@@ -1,6 +1,16 @@
-import React from 'react'
-
+import { React, useState } from 'react'
+import { Link } from 'react-router-dom'
 const AddBook = () => {
+  const [bookInfo, setBookInfo] = useState({})
+
+  const handleInputChange = (event) => {
+    event.persist()
+    setBookInfo((inputs) => ({
+      ...inputs,
+      [event.target.id]: event.target.value,
+    }))
+  }
+
   return (
     <div className="flex w-screen">
       <div className="w-2/3 flex flex-col justify-center items-center">
@@ -11,47 +21,64 @@ const AddBook = () => {
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="booktitle"
+            id="bookTitle"
             placeholder="Enter Book Title"
             type="text"
+            value={bookInfo.bookTitle}
+            onChange={handleInputChange}
           />
         </div>
 
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="booktitle"
+            id="bookAuthor"
             placeholder="Enter Author Name"
             type="text"
+            value={bookInfo.bookAuthor}
+            onChange={handleInputChange}
           />
         </div>
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="booktitle"
+            id="bookPublisher"
             placeholder="Enter Publisher"
             type="text"
+            value={bookInfo.bookPublisher}
+            onChange={handleInputChange}
           />
         </div>
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="booktitle"
+            id="bookEdition"
             placeholder="Enter Edition"
             type="text"
+            value={bookInfo.bookEdition}
+            onChange={handleInputChange}
           />
         </div>
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="booktitle"
+            id="bookYearOfPublishing"
             placeholder="Enter Year of Publishing"
             type="text"
+            value={bookInfo.bookYearOfPublishing}
+            onChange={handleInputChange}
           />
         </div>
-        <button className="m-3 xl:w-96 btn-primary flex justify-center">
-          REGISTER A NEW BOOK
-        </button>
+        <Link
+          state={{
+            bookInfo: bookInfo,
+          }}
+          to="/lender/confirmBook"
+        >
+          <button className="m-3 xl:w-96 btn-primary flex justify-center">
+            REGISTER A NEW BOOK
+          </button>
+        </Link>
       </div>
       <div className="w-1/3 flex items-center">
         <div className="w-4/5 rounded-lg shadow-xl bg-gray-50">
