@@ -14,31 +14,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="usersss")
+@Table(name="transactions")
 @NoArgsConstructor
 @Getter
 @Setter
 
-// for ankit
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int txId;
+    private int transactionID;
 
-    @Column(name="Lender_ID", nullable = false)
-    private int lenderId;
+    @Column(name="lender_ID", nullable = false)
+    private int lenderID;
 
-    @Column(name="Borrower_ID", nullable = false)
-    private int borrowerId;
+    @Column(name="borrower_ID", nullable = false)
+    private int borrowerID;
 
-    @Column(name="Book_ID", nullable = false)
-    private int book_Id;
+    @Column(name="book_ID", nullable = false)
+    private int bookID;
 
-    @Column(name="DateIssued", nullable = false)
+    @Column(name="date_issued", nullable = false)
     private Date dateIssued;
 
-    @Column(name="returnDate", nullable = false)
+    @Column(name="return_date", nullable = false)
     private Date returnDate;
 
 }

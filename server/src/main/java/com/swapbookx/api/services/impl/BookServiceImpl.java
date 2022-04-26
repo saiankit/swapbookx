@@ -5,7 +5,6 @@ import java.util.List;
 import com.swapbookx.api.payloads.BookDto;
 import com.swapbookx.api.services.BookService;
 
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.swapbookx.api.repositories.BookRepo;
@@ -79,6 +78,7 @@ public class BookServiceImpl implements BookService {
         book.setPublisher(bookDto.getPublisher());
         book.setLenderID(bookDto.getLenderID());
         book.setBorrowerID(bookDto.getBorrowerID());
+        book.setImageSrc(bookDto.getImageSrc());
 
         return book;
     }
@@ -95,6 +95,7 @@ public class BookServiceImpl implements BookService {
         bookDto.setPublisher(book.getPublisher());
         bookDto.setLenderID(book.getLenderID());
         bookDto.setBorrowerID(book.getBorrowerID());
+        bookDto.setImageSrc(book.getImageSrc());
 
 
         return bookDto;

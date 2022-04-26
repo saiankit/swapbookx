@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 @Getter
 
-public class TxDto {
-    private int txId;
-    private int lenderId;
-    private int borrowerId;
-    private int book_Id;
+public class TransactionDto {
+    private int transactionID;
+    private int lenderID;
+    private int borrowerID;
+    private int bookID;
     private Date dateIssued;
     private Date returnDate;
 }

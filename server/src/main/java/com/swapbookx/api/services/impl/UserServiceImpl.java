@@ -1,7 +1,6 @@
 package com.swapbookx.api.services.impl;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.swapbookx.api.models.User;
@@ -33,8 +32,9 @@ public class UserServiceImpl implements UserService {
 
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-
+        user.setAddress(userDto.getAddress());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setUserName(userDto.getUserName());
 
         User updatedUser = this.userRepo.save(user);
 
@@ -69,10 +69,14 @@ public class UserServiceImpl implements UserService {
 
     private User dtoToUser(UserDto userDto) {
         User user = new User();
-        user.setId(userDto.getId());
+        user.setUserID(userDto.getUserID());
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
+        user.setAddress(userDto.getAddress());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setUserName(userDto.getUserName());
+        user.setIsAdmin(userDto.getIsAdmin());
 
         return user;
     }
@@ -80,10 +84,14 @@ public class UserServiceImpl implements UserService {
     public UserDto userToDto(User user) {
         UserDto userDto = new UserDto();
 
-        userDto.setId(user.getId());
+        userDto.setUserID(user.getUserID());
         userDto.setName(user.getName());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
+        userDto.setAddress(user.getAddress());
+        userDto.setPhoneNumber(user.getPhoneNumber());
+        userDto.setUserName(user.getUserName());
+        userDto.setIsAdmin(user.getIsAdmin());
 
         return userDto;
     }

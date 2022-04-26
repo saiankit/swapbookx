@@ -46,4 +46,7 @@ public class Book {
     @Column(name="book_borrower")
     private String borrowerID;
 
+    @Column(name="book_image")
+    private String imageSrc;
+
 }

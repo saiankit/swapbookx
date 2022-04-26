@@ -1,14 +1,16 @@
 package com.swapbookx.api.services;
 
-import com.swapbookx.api.payloads.TxDto;
+import com.swapbookx.api.payloads.TransactionDto;
 import java.util.List;
 
 
 public interface TransactionService {
-    TxDto createTx(TxDto tx);
-    TxDto getTxById(Integer txID);
+    TransactionDto createTransaction(TransactionDto transactionDto);
+    TransactionDto getTransactionByID(Integer transactionID);
 
-    List<TxDto> getAlltx();
+    List<TransactionDto> getAllTransactions();
+
+    TransactionDto updateTransaction(TransactionDto transactionDto);
 
 
 }
