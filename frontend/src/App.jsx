@@ -9,24 +9,22 @@ import BorrowerDashboard from './pages/borrower'
 import RequestsDashboard from './pages/requests'
 import TransactionsDashboard from './pages/transactions'
 import HomeScreen from './pages/home'
-import Sidebar from './components/sidebar.jsx'
 import AddBook from './pages/addBook'
 import ConfirmBook from './pages/confirmBook'
+import LoginPage from './pages/loginPage'
 export default function App() {
   return (
     <>
-      <div className="flex">
-        <Sidebar />
-        <Routes>
-          <Route exact element={<HomeScreen />} path="/" />
-          <Route element={<LenderDashboard />} path="/lender" />
-          <Route element={<BorrowerDashboard />} path="/borrower" />
-          <Route element={<RequestsDashboard />} path="/requests" />
-          <Route element={<AddBook />} path="/lender/addBook" />
-          <Route element={<ConfirmBook />} path="/lender/confirmBook" />
-          <Route element={<TransactionsDashboard />} path="/transactions" />
-        </Routes>
-      </div>
+      <Routes>
+        <Route exact element={<HomeScreen />} path="/" />
+        <Route element={<LoginPage />} path="/login" />
+        <Route element={<LenderDashboard />} path="/lender" />
+        <Route element={<BorrowerDashboard />} path="/borrower" />
+        <Route element={<RequestsDashboard />} path="/requests" />
+        <Route element={<AddBook />} path="/lender/addBook" />
+        <Route element={<ConfirmBook />} path="/lender/confirmBook" />
+        <Route element={<TransactionsDashboard />} path="/transactions" />
+      </Routes>
     </>
   )
 }

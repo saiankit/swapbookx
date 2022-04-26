@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import UploadIcon from '../assets/icons/upload'
+import Sidebar from '../components/sidebar'
 const AddBook = () => {
   const [bookInfo, setBookInfo] = useState({})
   const [selectedFile, setSelectedFile] = useState()
@@ -23,6 +24,7 @@ const AddBook = () => {
 
   return (
     <div className="flex w-screen">
+      <Sidebar />
       <div className="w-2/3 flex flex-col justify-center items-center">
         <h1 className="m-3 xl:w-96 text-4xl font-bold leading-tight tracking-tight">
           ADD A NEW BOOK FOR LENDING

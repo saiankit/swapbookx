@@ -1,9 +1,5 @@
 import React from 'react'
 
-// import DeleteIcon from '../assets/icons/delete'
-
-// import EditIcon from '../assets/icons/edit'
-
 const BookCard = ({ title, author, imgSrc }) => {
   return (
     <div className="flex flex-col items-center bg-white rounded-lg shadow-xl h-100 p-4 max-w-md hover:scale-105 duration-150 ease-in-out">
