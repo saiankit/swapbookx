@@ -1,7 +1,15 @@
 import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import UploadIcon from '../assets/icons/upload'
 const AddBook = () => {
   const [bookInfo, setBookInfo] = useState({})
+  const [selectedFile, setSelectedFile] = useState()
+  const [isSelected, setIsSelected] = useState(false)
+  const changeHandler = (event) => {
+    setSelectedFile(event.target.files[0])
+    setIsSelected(true)
+  }
 
   const handleInputChange = (event) => {
     event.persist()
@@ -9,6 +17,8 @@ const AddBook = () => {
       ...inputs,
       [event.target.id]: event.target.value,
     }))
+
+    console.log(bookInfo)
   }
 
   return (
@@ -86,25 +96,18 @@ const AddBook = () => {
             <div className="flex items-center justify-center w-full">
               <label className="flex flex-col items-center justify-center w-full h-64 border-4 border-slate-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
                 <div className="flex flex-col items-center justify-center pt-7">
-                  <svg
-                    className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                  <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                    Upload Book Cover Image
-                  </p>
+                  {!isSelected ? (
+                    <>
+                      <UploadIcon />
+                      <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                        Upload Book Cover Image
+                      </p>
+                    </>
+                  ) : (
+                    <h1>{selectedFile}</h1>
+                  )}
                 </div>
-                <input className="opacity-0" type="file" />
+                <input name="bookCover" type="file" onChange={changeHandler} />
               </label>
             </div>
           </div>
