@@ -101,5 +101,13 @@ public class BookServiceImpl implements BookService {
         return bookDto;
     }
 
+    @Override
+    public BookDto getBookById(Integer uid) {
+        Book book = this.bookRepo.findById(uid).orElseThrow(( () -> new ResourceNotFoundException("book","id", uid)));
+
+        return this.bookToDto(book);
+        
+    }
+
 
 }

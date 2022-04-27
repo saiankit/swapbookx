@@ -10,7 +10,7 @@ public interface TransactionService {
 
     List<TransactionDto> getAllTransactions();
 
-    TransactionDto updateTransaction(TransactionDto transactionDto);
+    TransactionDto updateTransaction(TransactionDto transactionDto, Integer transactionID);
 
 
 }

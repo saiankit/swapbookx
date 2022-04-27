@@ -1,10 +1,7 @@
 package com.swapbookx.api.controllers;
 
-import java.net.http.HttpResponse.ResponseInfo;
 import java.util.List;
-import java.util.Map;
 
-import com.swapbookx.api.models.User;
 import com.swapbookx.api.payloads.ApiResponse;
 import com.swapbookx.api.payloads.UserDto;
 import com.swapbookx.api.services.UserService;
