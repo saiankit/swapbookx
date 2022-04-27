@@ -1,16 +1,9 @@
 import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import UploadIcon from '../assets/icons/upload'
 import Sidebar from '../components/sidebar'
 const AddBook = () => {
   const [bookInfo, setBookInfo] = useState({})
-  const [selectedFile, setSelectedFile] = useState()
-  const [isSelected, setIsSelected] = useState(false)
-  const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0])
-    setIsSelected(true)
-  }
 
   const handleInputChange = (event) => {
     event.persist()
@@ -25,7 +18,7 @@ const AddBook = () => {
   return (
     <div className="flex w-screen">
       <Sidebar />
-      <div className="w-2/3 flex flex-col justify-center items-center">
+      <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center justify-center py-12 h-full w-full">
         <h1 className="m-3 xl:w-96 text-4xl font-bold leading-tight tracking-tight">
           ADD A NEW BOOK FOR LENDING
         </h1>
@@ -81,42 +74,42 @@ const AddBook = () => {
             onChange={handleInputChange}
           />
         </div>
+
+        <div className="m-3 xl:w-96">
+          <input
+            className="form-input"
+            id="bookCover"
+            placeholder="Enter Book Cover URI"
+            type="text"
+            value={bookInfo.bookCover}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="m-3 xl:w-96">
+          <select
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            id="bookGenre"
+            value={bookInfo.bookGenre}
+            onChange={handleInputChange}
+          >
+            <option selected="">Choose a Genre</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Horror">Horror</option>
+            <option value="Romance">Romance</option>
+            <option value="Self Help">Self Help</option>
+          </select>
+        </div>
         <Link
           state={{
             bookInfo: bookInfo,
           }}
           to="/lender/confirmBook"
         >
-          <button className="m-3 xl:w-96 btn-primary flex justify-center">
+          <button className="m-3 xl:w-96 btn-primary hover:scale-105 duration-100 flex justify-center">
             REGISTER A NEW BOOK
           </button>
         </Link>
-      </div>
-      <div className="w-1/3 flex items-center">
-        <div className="w-4/5 rounded-lg shadow-xl bg-gray-50">
-          <div className="m-4">
-            <div className="flex items-center justify-center w-full">
-              <label className="flex flex-col items-center justify-center w-full h-64 border-4 border-slate-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                <div className="flex flex-col items-center justify-center pt-7">
-                  {!isSelected ? (
-                    <>
-                      <UploadIcon />
-                      <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                        Upload Book Cover Image
-                      </p>
-                    </>
-                  ) : (
-                    <h1>{selectedFile}</h1>
-                  )}
-                </div>
-                <input name="bookCover" type="file" onChange={changeHandler} />
-              </label>
-            </div>
-          </div>
-          <div className="flex justify-center p-2">
-            <button className="btn-primary w-full">Upload</button>
-          </div>
-        </div>
       </div>
     </div>
   )

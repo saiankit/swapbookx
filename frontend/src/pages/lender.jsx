@@ -85,9 +85,9 @@ function LenderDashboard() {
                 <BookCard
                   key={index}
                   author={book.author}
-                  bookID = {index}
+                  bookID={index}
                   imgSrc={book.imgSrc}
-                  isBorrower={true}
+                  isLender={true}
                   title={book.title}
                 />
               )

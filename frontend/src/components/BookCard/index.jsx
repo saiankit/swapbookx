@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import BookCardBorrower from './bookCard.borrower'
 import BookCardLender from './bookCard.lender'
 
-const BookCard = ({ title, author, imgSrc, isBorrower, bookID }) => {
+const BookCard = ({ title, author, imgSrc, isLender, bookID }) => {
   return (
-    <Link to={isBorrower ? '/borrower/book/' + bookID : '/lender'}>
+    <Link to={isLender ? '/lender' : '/borrower/book/' + bookID}>
       <div className="flex flex-col items-center bg-white rounded-lg shadow-xl h-96 p-4 max-w-md">
         <div className="max-w-md">
           <img
@@ -20,7 +20,7 @@ const BookCard = ({ title, author, imgSrc, isBorrower, bookID }) => {
             {title}
           </h5>
           <h5 className="text-md tracking-tight text-gray-900 ">{author}</h5>
-          {isBorrower ? <BookCardLender /> : <BookCardBorrower />}
+          {isLender ? <BookCardLender /> : <BookCardBorrower />}
         </div>
       </div>
     </Link>
