@@ -1,6 +1,6 @@
 import { React, useState } from 'react'
 
-import BookCard from '../components/bookCard'
+import BookCard from '../components/BookCard'
 import Sidebar from '../components/sidebar'
 
 const data = [
@@ -106,6 +106,16 @@ function BorrowerDashboard() {
             </button>
           </div>
 
+          {filtered.length === 0 && (
+            <div
+              className="p-4 m-8 flex items-center justify-center text-sm text-gray-700 bg-gray-100 rounded-lg"
+              role="alert"
+            >
+              <span className="font-medium">Sorry! </span> No Books found based
+              on your search
+            </div>
+          )}
+
           <div className="grid grid-cols-3 space-4 gap-8">
             {filtered.map((book, index) => {
               return (
@@ -113,6 +123,7 @@ function BorrowerDashboard() {
                   key={index}
                   author={book.author}
                   imgSrc={book.imgSrc}
+                  isBorrower={false}
                   title={book.title}
                 />
               )
