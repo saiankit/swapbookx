@@ -2,11 +2,11 @@ import React from 'react'
 
 const BookCard = ({ title, author, imgSrc }) => {
   return (
-    <div className="flex flex-col items-center bg-white rounded-lg shadow-xl h-100 p-4 max-w-md hover:scale-105 duration-150 ease-in-out">
+    <div className="flex flex-col items-center bg-white rounded-lg shadow-xl h-96 p-4 max-w-md hover:scale-105 duration-150 ease-in-out">
       <div className="max-w-md">
         <img
           alt="Book Image"
-          className="rounded-lg shadow-xl object-contain h-60 hover:scale-105 duration-150 ease-in-out"
+          className="rounded-lg shadow-xl object-contain h-60"
           src={imgSrc}
         />
       </div>

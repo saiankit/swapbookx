@@ -74,7 +74,7 @@ function BorrowerDashboard() {
       <div className="flex">
         <Sidebar />
 
-        <div className="flex flex-col mx-auto py-12 px-12 h-screen items-center">
+        <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
           <div className="flex space-x-4">
             <input
               className="max-w-md justify-center bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white "

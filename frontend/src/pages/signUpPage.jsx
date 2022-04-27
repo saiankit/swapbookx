@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import axios from 'axios'
 /* eslint handle-callback-err: "warn" */
+import { Link } from 'react-router-dom'
 
 import LogoDark from '../assets/icons/logoDark'
 
@@ -8,7 +9,6 @@ const SignUpPage = () => {
   const [formValue, setformValue] = useState({})
   const [loading, setLoading] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [response, setResponse] = useState({})
 
   const handleSubmit = (event) => {
     setLoading(true)
@@ -20,7 +20,6 @@ const SignUpPage = () => {
 
     axios.post('http://localhost:8080/api/users/', formValue).then((res) => {
       console.log(res)
-      setResponse(res.data)
       setLoading(false)
     })
   }
@@ -39,7 +38,7 @@ const SignUpPage = () => {
         <div className="flex flex-col items-center justify-center">
           <LogoDark />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+            Create a new Account
           </h2>
         </div>
         <form className="mt-8 space-y-4">
@@ -116,40 +115,33 @@ const SignUpPage = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
-            <div className="text-sm font-medium text-orange-600 hover:text-orange-500">
-              Sign In
-            </div>
-            <div className="text-sm">
-              <a className="font-medium text-orange-600 hover:text-orange-500">
-                {' '}
-                Already have an account{' '}
-              </a>
-            </div>
-          </div>
           {isError && (
             <small className="mt-3 d-inline-block text-danger">
               Something went wrong. Please try again later.
             </small>
           )}
 
-          <div>
+          <Link to="/lender">
             <button
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-800 hover:bg-orange-700 "
+              className="mt-3 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-800 hover:bg-orange-700 "
               disabled={loading}
               type="submit"
               onClick={handleSubmit}
             >
               {loading ? 'Loading...' : 'REGISTER'}
             </button>
-            {response && (
-              <div className="mt-3">
-                <strong>Output:</strong>
-                <br />
-                <pre>{JSON.stringify(response, null, 2)}</pre>
-              </div>
-            )}
+          </Link>
+          <div className="flex items-center justify-between pb-2">
+            <div className="flex items-center" />
+            <div className="text-sm font-medium text-gray-600">
+              Already have an account ?
+            </div>
           </div>
+          <Link to="/login">
+            <button className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-400 hover:bg-slate-500 ">
+              SIGN IN
+            </button>
+          </Link>
         </form>
       </div>
     </div>

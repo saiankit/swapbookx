@@ -29,67 +29,65 @@ function Sidebar() {
   }
 
   return (
-    <div className="flex flex-no-wrap h-screen">
-      <div className="w-1/10 fixed bg-light shadow md:h-full flex-col justify-between">
-        <div className="px-8">
+    <div className="w-64 fixed top-0 left-0 h-screen flex shadow-lg bg-light flex-col justify-between">
+      <div className="px-4">
+        <Link to="/lender">
+          <div className="h-16 w-full flex items-center">
+            <LogoIcon />
+          </div>
+        </Link>
+
+        <ul className="mt-8 space-y-3 flex flex-col">
           <Link to="/lender">
-            <div className="h-16 w-full flex items-center">
-              <LogoIcon />
-            </div>
+            <li
+              className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
+                lender && 'bg-gray-700'
+              }`}
+            >
+              <div className="flex items-center">
+                <LenderIcon />
+                <span className="text-md  ml-2">Lender Dashboard</span>
+              </div>
+            </li>
           </Link>
+          <Link to="/borrower">
+            <li
+              className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
+                borrower && 'bg-gray-700'
+              }`}
+            >
+              <div className="flex items-center">
+                <BorrowerIcon />
+                <span className="text-md  ml-2">Borrower Dashboard</span>
+              </div>
+            </li>
+          </Link>
+          <Link to="/requests">
+            <li
+              className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
+                requests && 'bg-gray-700'
+              }`}
+            >
+              <div className="flex items-center">
+                <RequestsIcon />
+                <span className="text-md  ml-2">Requests</span>
+              </div>
+            </li>
+          </Link>
+          <Link to="/transactions">
+            <li
+              className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
+                transactions && 'bg-gray-700'
+              }`}
+            >
+              <div className="flex items-center">
+                <TransactionsIcon />
 
-          <ul className="mt-8 space-y-3 flex flex-col">
-            <Link to="/lender">
-              <li
-                className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
-                  lender && 'bg-gray-700'
-                }`}
-              >
-                <div className="flex items-center">
-                  <LenderIcon />
-                  <span className="text-md  ml-2">Lender Dashboard</span>
-                </div>
-              </li>
-            </Link>
-            <Link to="/borrower">
-              <li
-                className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
-                  borrower && 'bg-gray-700'
-                }`}
-              >
-                <div className="flex items-center">
-                  <BorrowerIcon />
-                  <span className="text-md  ml-2">Borrower Dashboard</span>
-                </div>
-              </li>
-            </Link>
-            <Link to="/requests">
-              <li
-                className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
-                  requests && 'bg-gray-700'
-                }`}
-              >
-                <div className="flex items-center">
-                  <RequestsIcon />
-                  <span className="text-md  ml-2">Requests</span>
-                </div>
-              </li>
-            </Link>
-            <Link to="/transactions">
-              <li
-                className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
-                  transactions && 'bg-gray-700'
-                }`}
-              >
-                <div className="flex items-center">
-                  <TransactionsIcon />
-
-                  <span className="text-md  ml-2">Transactions</span>
-                </div>
-              </li>
-            </Link>
-          </ul>
-        </div>
+                <span className="text-md  ml-2">Transactions</span>
+              </div>
+            </li>
+          </Link>
+        </ul>
       </div>
     </div>
   )

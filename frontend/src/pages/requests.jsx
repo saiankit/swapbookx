@@ -5,7 +5,7 @@ function RequestsDashboard() {
   return (
     <div className="flex">
       <SideBar />
-      <div className="flex h-full flex-col justify-center items-center">
+      <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
         <h1 className="text-4xl mb-5 font-bold">RequestsDashboard</h1>
         <span className="text-7xl">📞</span>
       </div>

@@ -1,14 +1,20 @@
 import React from 'react'
 
 import Sidebar from '../components/sidebar'
+import TransactionCard from '../components/transactionCard'
 
 function TransactionsDashboard() {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="flex h-full flex-col justify-center items-center">
-        <h1 className="text-4xl mb-5 font-bold">TransactionsDashboard</h1>
-        <span className="text-7xl">📞</span>
+      <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
+        <TransactionCard
+          bookID={121}
+          bookTitle={'Harry'}
+          borrower={'asdasd'}
+          borrowerID={1}
+          lenderID={2}
+        />
       </div>
     </div>
   )
