@@ -11,9 +11,7 @@
     @apply btn bg-slate-800 text-white;
     display: inline-block;
   }
-  .btn-primary:hover {
-    animation: pulsate 1s ease-in-out;
-  }
+
   @keyframes pulsate {
     0% {
       box-shadow: 0 0 25px #5ddcff, 0 0 50px #4e00c2;
