@@ -40,7 +40,7 @@ public class User {
     @Column(name="user_phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @Column(name="user_isAdmin", nullable = false)
+    @Column(name="user_isAdmin")
     private Boolean isAdmin;
 
 }

@@ -15,8 +15,9 @@ const SignUpPage = () => {
     setIsError(false)
     setformValue((inputs) => ({
       ...inputs,
-      isAdmin: false,
+      isAdmin: true,
     }))
+
     axios.post('http://localhost:8080/api/users/', formValue).then((res) => {
       console.log(res)
       setResponse(res.data)
@@ -108,7 +109,7 @@ const SignUpPage = () => {
                 id="phoneNumber"
                 name="phoneNumber"
                 placeholder="Phone Number"
-                type="number"
+                type="text"
                 value={formValue.phoneNumber}
                 onChange={handleInputChange}
               />
