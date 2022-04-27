@@ -1,19 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import LogoDark from '../assets/icons/logoDark'
+
 const LoginPage = () => {
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+      <div className="max-w-sm w-full space-y-8">
         <div className="flex flex-col items-center justify-center">
           <LogoDark />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>
         </div>
-        <form action="#" className="mt-8 space-y-6" method="POST">
-          <input name="remember" type="hidden" value="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
+        <form className="mt-8 space-y-4">
+          <div className="rounded-md shadow-sm space-y-8">
             <div>
               <label className="sr-only" htmlFor="email-address">
                 Email address
@@ -43,26 +44,28 @@ const LoginPage = () => {
               />
             </div>
           </div>
-
           <div className="flex items-center justify-between">
             <div className="flex items-center" />
-
-            <div className="text-sm">
-              <a
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-                href="#"
-              >
-                {' '}
-                Forgot your password?{' '}
-              </a>
+            <div className="text-sm font-medium text-orange-600 hover:text-orange-500">
+              Forgot your password?
             </div>
           </div>
-
-          <div>
-            <button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 ">
+          <Link to="/lender">
+            <button className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-800 hover:bg-orange-700 ">
               SIGN IN
             </button>
+          </Link>
+          <div className="flex items-center justify-between pb-2">
+            <div className="flex items-center" />
+            <div className="text-sm font-medium text-gray-600">
+              New to Swapbookx
+            </div>
           </div>
+          <Link to="/register">
+            <button className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-400 hover:bg-slate-500 ">
+              REGISTER
+            </button>
+          </Link>
         </form>
       </div>
     </div>
