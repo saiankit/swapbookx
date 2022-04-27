@@ -3,7 +3,8 @@ import { React } from 'react'
 import { Link } from 'react-router-dom'
 
 import { AddIcon } from '../assets/icons/index'
-import BookCard from '../components/bookCard'
+import BookCard from '../components/BookCard'
+
 import Sidebar from '../components/sidebar'
 
 const data = [
@@ -65,7 +66,7 @@ function LenderDashboard() {
       <div className="flex">
         <Sidebar />
 
-        <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
+        <div className="pl-72 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
           <div className="flex items-end justify-end ">
             <Link to="/lender/addBook">
               <button
@@ -84,7 +85,9 @@ function LenderDashboard() {
                 <BookCard
                   key={index}
                   author={book.author}
+                  bookID = {index}
                   imgSrc={book.imgSrc}
+                  isBorrower={true}
                   title={book.title}
                 />
               )

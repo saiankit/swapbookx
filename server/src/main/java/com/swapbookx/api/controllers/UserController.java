@@ -3,6 +3,7 @@ package com.swapbookx.api.controllers;
 import java.util.List;
 
 import com.swapbookx.api.payloads.ApiResponse;
+import com.swapbookx.api.payloads.LoginDto;
 import com.swapbookx.api.payloads.UserDto;
 import com.swapbookx.api.services.UserService;
 
@@ -32,6 +33,14 @@ public class UserController {
         UserDto createUserDto = this.userService.createUser(userDto);
 
         return new ResponseEntity<>(createUserDto, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserDto> loginUser(@RequestBody LoginDto loginDto) {
+
+        UserDto createLoginDto = this.userService.loginUser(loginDto);
+
+        return new ResponseEntity<>(createLoginDto, HttpStatus.CREATED);
     }
 
     // PUT

@@ -13,6 +13,7 @@ import AddBook from './pages/addBook'
 import ConfirmBook from './pages/confirmBook'
 import LoginPage from './pages/loginPage'
 import SignUpPage from './pages/signUpPage'
+import BookDetails from './pages/bookDetail'
 export default function App() {
   return (
     <>
@@ -26,6 +27,7 @@ export default function App() {
         <Route element={<AddBook />} path="/lender/addBook" />
         <Route element={<ConfirmBook />} path="/lender/confirmBook" />
         <Route element={<TransactionsDashboard />} path="/transactions" />
+        <Route element={<BookDetails />} path="/borrower/book/:bookID" />
       </Routes>
     </>
   )

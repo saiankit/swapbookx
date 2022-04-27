@@ -58,14 +58,14 @@ public class UserServiceImpl implements UserService {
         // sai ankit
 
         List<UserDto> userDtos = users.stream().map(user->this.userToDto(user)).collect(Collectors.toList());
-        
+        System.out.println("hI ");
         UserDto ans = new UserDto();
         String a = log.getUserName();
         String b = log.getPassword();
         for(int i=0;i<userDtos.size();i++){
             String c = userDtos.get(i).getUserName();
             String d = userDtos.get(i).getPassword();
-            if(a==c && b==d){
+            if(a.equals(c) && b.equals(d)) {
                 ans = userDtos.get(i);
                 break;
             }
