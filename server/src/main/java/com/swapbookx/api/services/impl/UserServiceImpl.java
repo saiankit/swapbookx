@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.swapbookx.api.models.User;
+import com.swapbookx.api.payloads.LoginDto;
 import com.swapbookx.api.payloads.UserDto;
 import com.swapbookx.api.repositories.UserRepo;
 import com.swapbookx.api.services.UserService;
@@ -49,6 +50,27 @@ public class UserServiceImpl implements UserService {
         User user = this.userRepo.findById(userID).orElseThrow(( () -> new ResourceNotFoundException("User","id", userID)));
 
         return this.userToDto(user);
+    }
+
+    @Override
+    public UserDto loginUser (LoginDto log){
+        List<User> users = this.userRepo.findAll();
+
+        List<UserDto> userDtos = users.stream().map(user->this.userToDto(user)).collect(Collectors.toList());
+        
+        UserDto ans = new UserDto();
+        String a = log.getUserName();
+        String b = log.getPassword();
+        for(int i=0;i<userDtos.size();i++){
+            String c = userDtos.get(i).getUserName();
+            String d = userDtos.get(i).getPassword();
+            if(a==c && b==d){
+                ans = userDtos.get(i);
+                break;
+            }
+        }
+        return ans;
+
     }
 
     @Override
