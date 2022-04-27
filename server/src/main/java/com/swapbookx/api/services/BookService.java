@@ -11,4 +11,7 @@ public interface BookService {
 
     List<BookDto> getAllBooks();
     BookDto getBookById(Integer uid);
+
+    List<BookDto> getOwner(Integer userID);
+
 }

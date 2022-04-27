@@ -41,10 +41,10 @@ public class Book {
     private String genre;
 
     @Column(name="book_lender", nullable = false)
-    private String lenderID;
+    private int lenderID;
 
     @Column(name="book_borrower")
-    private String borrowerID;
+    private int borrowerID;
 
     @Column(name="book_image")
     private String imageSrc;

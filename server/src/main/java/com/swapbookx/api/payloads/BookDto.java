@@ -15,7 +15,7 @@ public class BookDto {
     private String edition;
     private String year;
     private String genre;
-    private String lenderID;
-    private String borrowerID;
+    private int lenderID;
+    private int borrowerID;
     private String imageSrc;
 }

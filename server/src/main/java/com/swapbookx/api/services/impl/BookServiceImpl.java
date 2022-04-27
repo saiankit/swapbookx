@@ -1,5 +1,6 @@
 package com.swapbookx.api.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.swapbookx.api.payloads.BookDto;
@@ -29,6 +30,8 @@ public class BookServiceImpl implements BookService {
 
         return this.bookToDto(savedBook);
     }
+
+    // Give lenderID and find all books that lender is issuing and return List<Books>
 
     @Override
     public BookDto updateBook(BookDto bookDto, Integer bookID) {
@@ -107,6 +110,23 @@ public class BookServiceImpl implements BookService {
 
         return this.bookToDto(book);
         
+    }
+    // Gets books of Particular User
+    @Override
+    public List<BookDto> getOwner(Integer userID) {
+        List<BookDto> ans = new ArrayList<BookDto>();
+        List<Book> books = this.bookRepo.findAll();
+
+        List<BookDto> bookDtos = books.stream().map(book->this.bookToDto(book)).collect(Collectors.toList());
+
+        for(int i=0;i<bookDtos.size();i++){
+            if(bookDtos.get(i).getLenderID()== userID){
+                ans.add(bookDtos.get(i));
+            }
+        }
+        
+
+        return ans;
     }
 
 

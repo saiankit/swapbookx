@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto loginUser (LoginDto log){
         List<User> users = this.userRepo.findAll();
+        // sai ankit
 
         List<UserDto> userDtos = users.stream().map(user->this.userToDto(user)).collect(Collectors.toList());
         System.out.println("hI ");
