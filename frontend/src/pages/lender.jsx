@@ -64,7 +64,8 @@ function LenderDashboard() {
     <>
       <div className="flex">
         <Sidebar />
-        <div className="flex flex-col mx-auto py-12 px-12 h-screen w-9/10">
+
+        <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
           <div className="flex items-end justify-end ">
             <Link to="/lender/addBook">
               <button

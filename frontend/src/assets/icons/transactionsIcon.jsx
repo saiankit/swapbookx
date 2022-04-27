@@ -9,35 +9,42 @@ export default function TransactionsIcon() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12 2L22 8.5V15.5L12 22L2 15.5V8.5L12 2Z"
+        d="M8 6H21"
         stroke="#667080"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
       />
       <path
-        d="M12 22V15.5"
+        d="M8 12H21"
         stroke="#667080"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
       />
       <path
-        d="M22 8.5L12 15.5L2 8.5"
+        d="M8 18H21"
         stroke="#667080"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
       />
       <path
-        d="M2 15.5L12 8.5L22 15.5"
+        d="M3 6H3.01"
         stroke="#667080"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
       />
       <path
-        d="M12 2V8.5"
+        d="M3 12H3.01"
+        stroke="#667080"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+      <path
+        d="M3 18H3.01"
         stroke="#667080"
         strokeLinecap="round"
         strokeLinejoin="round"
