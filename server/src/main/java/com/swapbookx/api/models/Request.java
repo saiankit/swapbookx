@@ -18,7 +18,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class Request {
     
 
@@ -45,6 +44,6 @@ public class Request {
     private Date returnDate;
 
     @Column(name="accepted", nullable = false)
-    private boolean accepted;
+    private Boolean accepted;
 
 }

@@ -30,6 +30,8 @@ public class BookServiceImpl implements BookService {
         return this.bookToDto(savedBook);
     }
 
+    // Give lenderID and find all books that lender is issuing and return List<Books>
+
     @Override
     public BookDto updateBook(BookDto bookDto, Integer bookID) {
 

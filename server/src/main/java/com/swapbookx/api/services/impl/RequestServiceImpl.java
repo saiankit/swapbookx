@@ -49,9 +49,8 @@ public class RequestServiceImpl implements RequestService {
         request.setLenderID(requestDto.getLenderID());
         request.setBorrowerID(requestDto.getBorrowerID());
         request.setCollectionDate(requestDto.getCollectionDate());
-        request.setCollectionPlace(requestDto.getCollectionPlace());
         request.setReturnDate(requestDto.getReturnDate());
-        //request.setAccepted(requestDto.getAccepted());
+        request.setAccepted(requestDto.getAccepted());
         request.setBorrowerID(requestDto.getBorrowerID());
 
         return request;
@@ -65,9 +64,8 @@ public class RequestServiceImpl implements RequestService {
         requestDto.setBorrowerID(request.getBorrowerID());
         requestDto.setBookID(request.getBookID());
         requestDto.setCollectionDate(request.getCollectionDate());
-        requestDto.setCollectionPlace(request.getCollectionPlace());
         requestDto.setReturnDate(request.getReturnDate());
-        //requestDto.setAccepted(request.getAccepted());
+        requestDto.setAccepted(request.getAccepted());
         requestDto.setBorrowerID(request.getBorrowerID());
 
         return requestDto;
