@@ -33,6 +33,15 @@ public class BookController {
         return new ResponseEntity<>(createBookDto, HttpStatus.CREATED);
     }
 
+    
+
+    @GetMapping("/owner/{userID}")
+    public ResponseEntity<List<BookDto>> getOwner(@PathVariable("userID") Integer userID){
+        List<BookDto> getOwnerDeltails = this.bookService.getOwner(userID);
+
+        return new ResponseEntity<>(getOwnerDeltails, HttpStatus.CREATED);
+    }
+
     @PutMapping("/{bookID}")
     public ResponseEntity<BookDto> updateBook(@RequestBody BookDto bookDto, @PathVariable("bookID") Integer uid)
     {
