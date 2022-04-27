@@ -8,5 +8,7 @@ public interface RequestService {
     void deleteRequest(Integer requestID);
 
     List<RequestDto> getAllRequests();
+    List<RequestDto> getRequestsLender(Integer lenderID);
+    List<RequestDto> getRequestsBorrower(Integer borrowerID);
     RequestDto getRequestById(Integer uid);
 }

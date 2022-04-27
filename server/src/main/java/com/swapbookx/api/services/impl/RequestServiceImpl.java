@@ -1,5 +1,6 @@
 package com.swapbookx.api.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -77,6 +78,44 @@ public class RequestServiceImpl implements RequestService {
         Request request = this.requestRepo.findById(uid).orElseThrow(( () -> new ResourceNotFoundException("request","id", uid)));
 
         return this.requestToDto(request);
+    }
+
+    //get req of a lender
+    @Override
+    public List<RequestDto> getRequestsLender(Integer lenderID) {
+
+        List<RequestDto> ans = new ArrayList();
+
+        List<Request> requests = this.requestRepo.findAll();
+
+        List<RequestDto> requestDtos = requests.stream().map(request->this.requestToDto(request)).collect(Collectors.toList());
+
+        for(int i=0;i<requestDtos.size();i++){
+            if(requestDtos.get(i).getLenderID()==lenderID){
+                ans.add(requestDtos.get(i));
+            }
+        }
+
+        return ans;
+    }
+
+    //get req of a borrower
+    @Override
+    public List<RequestDto> getRequestsBorrower(Integer borrowerID) {
+
+        List<RequestDto> ans = new ArrayList();
+
+        List<Request> requests = this.requestRepo.findAll();
+
+        List<RequestDto> requestDtos = requests.stream().map(request->this.requestToDto(request)).collect(Collectors.toList());
+
+        for(int i=0;i<requestDtos.size();i++){
+            if(requestDtos.get(i).getBorrowerID()==borrowerID){
+                ans.add(requestDtos.get(i));
+            }
+        }
+
+        return ans;
     }
     
 }
