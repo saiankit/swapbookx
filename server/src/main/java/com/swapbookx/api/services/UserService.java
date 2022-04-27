@@ -3,6 +3,7 @@ package com.swapbookx.api.services;
 import java.util.List;
 
 import com.swapbookx.api.payloads.UserDto;
+import com.swapbookx.api.payloads.LoginDto;
 
 public interface UserService {
     UserDto createUser(UserDto user);
@@ -12,4 +13,5 @@ public interface UserService {
     List<UserDto> getAllusers();
 
     void deleteUser(Integer userID);
+    UserDto loginUser (LoginDto log);
 }
