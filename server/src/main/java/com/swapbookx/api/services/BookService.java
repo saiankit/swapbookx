@@ -10,4 +10,5 @@ public interface BookService {
     void deleteBook(Integer bookID);
 
     List<BookDto> getAllBooks();
+    BookDto getBookById(Integer uid);
 }

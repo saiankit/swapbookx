@@ -8,4 +8,5 @@ public interface RequestService {
     void deleteRequest(Integer requestID);
 
     List<RequestDto> getAllRequests();
+    RequestDto getRequestById(Integer uid);
 }

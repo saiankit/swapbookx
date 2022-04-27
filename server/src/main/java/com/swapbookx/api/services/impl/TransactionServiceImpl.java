@@ -3,6 +3,7 @@ package com.swapbookx.api.services.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.swapbookx.api.exceptions.ResourceNotFoundException;
 import com.swapbookx.api.models.Transaction;
 import com.swapbookx.api.payloads.TransactionDto;
 import com.swapbookx.api.repositories.TransactionRepo;
@@ -26,8 +27,9 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionDto getTransactionByID(Integer transactionID) {
+        Transaction transaction = this.transactionRepo.findById(transactionID).orElseThrow(( () -> new ResourceNotFoundException("transaction","id", transactionID)));
 
-        return null;
+        return this.transactionToDto(transaction);
     }
 
     @Override
@@ -38,9 +40,22 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionDto updateTransaction(TransactionDto transactionDto) {
-        // TODO Auto-generated method stub
-        return null;
+    public TransactionDto updateTransaction(TransactionDto transactionDto, Integer transactionID) {
+        
+        Transaction transaction = this.transactionRepo.findById(transactionID).orElseThrow(( () -> new ResourceNotFoundException("transaction","id", transactionID)));
+
+        transaction.setTransactionID(transactionDto.getTransactionID());
+        transaction.setLenderID(transactionDto.getLenderID());
+        transaction.setBorrowerID(transactionDto.getBorrowerID());
+        transaction.setBookID(transactionDto.getBookID());
+        transaction.setDateIssued(transactionDto.getDateIssued());
+        transaction.setReturnDate(transactionDto.getReturnDate());
+
+        Transaction updatedTransaction = this.transactionRepo.save(transaction);
+
+        TransactionDto updatedTransactionDto = this.transactionToDto(updatedTransaction);
+
+        return updatedTransactionDto;
     }
 
        private Transaction dtoToTransaction(TransactionDto transactionDto) {

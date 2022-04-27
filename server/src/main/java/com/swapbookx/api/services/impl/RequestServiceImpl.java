@@ -72,5 +72,12 @@ public class RequestServiceImpl implements RequestService {
 
         return requestDto;
     }
+
+    @Override
+    public RequestDto getRequestById(Integer uid) {
+        Request request = this.requestRepo.findById(uid).orElseThrow(( () -> new ResourceNotFoundException("request","id", uid)));
+
+        return this.requestToDto(request);
+    }
     
 }
