@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import { useLocation, Link } from 'react-router-dom'
 
 import Sidebar from '../components/sidebar'
@@ -13,7 +13,22 @@ const ConfirmBook = () => {
     bookCover,
     bookGenre,
   } = location.state.bookInfo
+const [formValue, setformValue] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
+  const handleSubmit = (event) => {
+    setLoading(true)
+    setIsError(false)
+    setformValue((inputs) => ({
+      ...inputs,
+    }))
+
+    axios.post('http://localhost:8080/api/users/', formValue).then((res) => {
+      console.log(res)
+      setLoading(false)
+    })
+  }
   return (
     <div className="flex w-screen">
       <Sidebar />
@@ -65,7 +80,9 @@ const ConfirmBook = () => {
             </div>
           </div>
           <Link to="/lender">
-            <button className="m-3 xl:w-60 btn-primary flex justify-center">
+            <button
+            
+            className="m-3 xl:w-60 btn-primary flex justify-center">
               CONFIRM
             </button>
           </Link>

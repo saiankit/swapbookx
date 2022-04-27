@@ -28,13 +28,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/")
+
+    // Register Users
+    @PostMapping("/register")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
         UserDto createUserDto = this.userService.createUser(userDto);
 
         return new ResponseEntity<>(createUserDto, HttpStatus.CREATED);
     }
 
+    // Login Users
     @PostMapping("/login")
     public ResponseEntity<UserDto> loginUser(@RequestBody LoginDto loginDto) {
 
@@ -43,8 +46,7 @@ public class UserController {
         return new ResponseEntity<>(createLoginDto, HttpStatus.CREATED);
     }
 
-    // PUT
-
+    // Update User
     @PutMapping("/{userID}")
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("userID") Integer uid)
     {
@@ -52,25 +54,25 @@ public class UserController {
         return ResponseEntity.ok(updateUser);
     }
 
-    //Delete
+    //Delete User
     @DeleteMapping("/{userID}")
     public ResponseEntity<ApiResponse> deleteUser(@PathVariable("userID") Integer uid){
         this.userService.deleteUser(uid);
         return new ResponseEntity<ApiResponse>(new ApiResponse("User Deleted", true),HttpStatus.OK);
     }
 
-    //Get
+    //Get All Users Details
     @GetMapping("/")
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return ResponseEntity.ok(this.userService.getAllusers());
     }
 
-    //Get - user
+    //Get User based on his userID
 
     @GetMapping("/{userID}")
-    public ResponseEntity<UserDto> getSingleUser(@PathVariable("userID") Integer uid){
+    public ResponseEntity<UserDto> getUserByID(@PathVariable("userID") Integer uid){
         return ResponseEntity.ok(this.userService.getUserById(uid));
     }
-    
+
 
 }

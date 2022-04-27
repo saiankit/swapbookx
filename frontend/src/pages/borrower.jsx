@@ -1,63 +1,21 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
+
+import axios from 'axios'
 
 import BookCard from '../components/BookCard'
 import Sidebar from '../components/sidebar'
-
-const data = [
-  {
-    title: 'Novo Nordisk A/S',
-    author: 'Peirce',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/5fa2dd/ffffff',
-  },
-  {
-    title: 'Atossa Genetics Inc.',
-    author: 'Tabbie',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/cc0000/ffffff',
-  },
-  {
-    title: 'ITT Inc.',
-    author: 'Dex',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/5fa2dd/ffffff',
-  },
-  {
-    title: 'Horizon Technology Finance Corporation',
-    author: 'Laetitia',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/ff4444/ffffff',
-  },
-  {
-    title: 'Cytokinetics, Incorporated',
-    author: 'Bartholomeo',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/cc0000/ffffff',
-  },
-  {
-    title: 'EMC Insurance Group Inc.',
-    author: 'Ninnette',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/cc0000/ffffff',
-  },
-  {
-    title: 'Compass Diversified Holdings',
-    author: 'Rosalia',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/ff4444/ffffff',
-  },
-  {
-    title: 'CST Brands, Inc.',
-    author: 'Gustaf',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/5fa2dd/ffffff',
-  },
-  {
-    title: 'Motif Bio plc',
-    author: 'Augy',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/5fa2dd/ffffff',
-  },
-  {
-    title: 'Welltower Inc.',
-    author: 'Gusella',
-    imgSrc: 'http://dummyimage.com/1593x2551.png/ff4444/ffffff',
-  },
-]
-
 function BorrowerDashboard() {
   const [search, setNewSearch] = useState('')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    async function fetchBooks() {
+      const result = await axios('http://localhost:8080/api/books/')
+
+      setData(result.data)
+    }
+    fetchBooks()
+  })
 
   const handleSearchChange = (e) => {
     setNewSearch(e.target.value)
@@ -122,8 +80,8 @@ function BorrowerDashboard() {
                 <BookCard
                   key={index}
                   author={book.author}
-                  bookID={index}
-                  imgSrc={book.imgSrc}
+                  bookID={book.bookID}
+                  imageSrc={book.imageSrc}
                   isLender={false}
                   title={book.title}
                 />

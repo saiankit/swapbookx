@@ -15,7 +15,6 @@ const SignUpPage = () => {
     setIsError(false)
     setformValue((inputs) => ({
       ...inputs,
-      isAdmin: true,
     }))
 
     axios.post('http://localhost:8080/api/users/', formValue).then((res) => {

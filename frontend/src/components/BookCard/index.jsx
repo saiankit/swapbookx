@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import BookCardBorrower from './bookCard.borrower'
 import BookCardLender from './bookCard.lender'
 
-const BookCard = ({ title, author, imgSrc, isLender, bookID }) => {
+const BookCard = ({ title, author, imageSrc, isLender, bookID }) => {
   return (
     <Link to={isLender ? '/lender' : '/borrower/book/' + bookID}>
       <div className="flex flex-col items-center bg-white rounded-lg shadow-xl h-96 p-4 max-w-md">
@@ -12,7 +12,7 @@ const BookCard = ({ title, author, imgSrc, isLender, bookID }) => {
           <img
             alt="Book Image"
             className="rounded-lg shadow-xl object-contain h-60"
-            src={imgSrc}
+            src={imageSrc}
           />
         </div>
         <div className="flex flex-col items-start w-full pt-4 max-w-md">

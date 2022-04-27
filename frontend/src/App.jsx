@@ -14,7 +14,6 @@ import ConfirmBook from './pages/confirmBook'
 import LoginPage from './pages/loginPage'
 import SignUpPage from './pages/signUpPage'
 import BookDetails from './pages/bookDetail'
-import 'flowbite'
 
 export default function App() {
   return (

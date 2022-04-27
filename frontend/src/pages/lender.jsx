@@ -1,66 +1,25 @@
-import { React } from 'react'
+import { React, useState, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
+import axios from 'axios'
+
 import { AddIcon } from '../assets/icons/index'
 import BookCard from '../components/BookCard'
-
 import Sidebar from '../components/sidebar'
 
-const data = [
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Varnam',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: ' Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-  {
-    title: 'Harry Potter and the Philosophers Stone',
-    author: 'JK Rowling',
-    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg',
-  },
-]
-
 function LenderDashboard() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    async function fetchBooks() {
+      const result = await axios('http://localhost:8080/api/books/')
+
+      setData(result.data)
+    }
+    fetchBooks()
+  })
+
   return (
     <>
       <div className="flex">
@@ -85,8 +44,8 @@ function LenderDashboard() {
                 <BookCard
                   key={index}
                   author={book.author}
-                  bookID={index}
-                  imgSrc={book.imgSrc}
+                  bookID={book.bookID}
+                  imageSrc={book.imageSrc}
                   isLender={true}
                   title={book.title}
                 />

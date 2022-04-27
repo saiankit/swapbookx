@@ -1,7 +1,8 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import 'react-datepicker/dist/react-datepicker.css'
 import DatePicker from 'react-datepicker'
+import axios from 'axios'
 const BookDetails = ({
   bookTitle,
   bookAuthor,
@@ -14,6 +15,17 @@ const BookDetails = ({
   const [collectionDate, setCollectionDate] = useState(null)
   const [returnDate, setReturnDate] = useState(null)
   const { bookID } = useParams()
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    async function fetchBooks() {
+      const result = await axios('http://localhost:8080/api/books/' + bookID)
+
+      setData(result.data)
+    }
+    fetchBooks()
+  })
 
   return (
     <div className="flex w-screen h-screen">
@@ -28,21 +40,21 @@ const BookDetails = ({
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Author: </h1>
-            <h1 className="font-bold">{bookAuthor}</h1>
+            <h1 className="font-bold">{data.author}</h1>
           </div>
         </div>
 
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Publisher: </h1>
-            <h1 className="font-bold">{bookPublisher}</h1>
+            <h1 className="font-bold">{data.publisher}</h1>
           </div>
         </div>
 
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Edition: </h1>
-            <h1 className="font-bold">{bookEdition}</h1>
+            <h1 className="font-bold">{data.edition}</h1>
           </div>
         </div>
 
@@ -51,7 +63,7 @@ const BookDetails = ({
             <h1 className="font-bold text-gray-500">
               Book Year of Publishing:{' '}
             </h1>
-            <h1 className="font-bold">{bookYearOfPublishing}</h1>
+            <h1 className="font-bold">{data.year}</h1>
           </div>
         </div>
 
