@@ -12,7 +12,7 @@ import lombok.Setter;
 
 public class ReqReturnDto {
     private int requestID;
-    private int lenderID;
+
     private int borrowerID;
     private int bookID;
     private Date dateIssued;
@@ -21,10 +21,7 @@ public class ReqReturnDto {
     private String title;
     private String author;
     private String imageSrc;
-
-
-
+    private int lenderID;
     private String lenderName;
-
     private String borrowerName;
 }

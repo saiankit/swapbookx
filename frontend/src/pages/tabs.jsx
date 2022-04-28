@@ -1,8 +1,7 @@
 import React from 'react'
 
-import RequestsCard from '../components/RequestsCard'
-
-import BorrowerRequests from './lenderRequests'
+import LenderRequests from './lenderRequests'
+import BorrowerRequests from './borrowerRequests'
 const Tabs = ({ color }) => {
   const [openTab, setOpenTab] = React.useState(1)
 
@@ -57,21 +56,7 @@ const Tabs = ({ color }) => {
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
-                  <RequestsCard
-                    author={'JK'}
-                    borrowerID={4}
-                    borrowerName={'Bheem'}
-                    collectionDate={'20/04/2022'}
-                    imageSrc={
-                      'https://images-na.ssl-images-amazon.com/images/I/41yu2qXhXXL._SX324_BO1,204,203,200_.jpg'
-                    }
-                    isLender={true}
-                    lenderID={3}
-                    lenderName={'Ram'}
-                    requestID={2}
-                    returnDate={'11/05/2023'}
-                    title={'Harry'}
-                  />
+                  <LenderRequests />
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
                   <BorrowerRequests />

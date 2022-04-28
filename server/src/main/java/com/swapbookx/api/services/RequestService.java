@@ -10,10 +10,10 @@ public interface RequestService {
     void deleteRequest(Integer requestID);
 
     List<RequestDto> getAllRequests();
-    List<RequestDto> getRequestsBorrower(Integer borrowerID);
+    List<ReqReturnDto> getRequestsBorrower(Integer borrowerID);
+    List<ReqReturnDto> getReqDetails(Integer userID);
     RequestDto getRequestById(Integer uid);
 
-    List<ReqReturnDto> getReqDetails(Integer userID);
     int getReqOnBook(Integer bookID);
 
 }

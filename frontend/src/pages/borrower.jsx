@@ -7,7 +7,7 @@ import Sidebar from '../components/sidebar'
 function BorrowerDashboard() {
   const [search, setNewSearch] = useState('')
   const [data, setData] = useState([])
-
+const userID = localStorage.getItem('userID')
   useEffect(() => {
     async function fetchBooks() {
       const result = await axios('http://localhost:8080/api/books/')
@@ -25,7 +25,7 @@ function BorrowerDashboard() {
     ? data
     : data.filter((book) =>
         book.title.toLowerCase().includes(search.toLowerCase())
-      )
+      ).filter((book) => book.lenderID.equals(userID))
 
   return (
     <>
