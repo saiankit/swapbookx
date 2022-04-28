@@ -3,9 +3,7 @@ package com.swapbookx.api.services.impl;
 import com.swapbookx.api.services.UserService;
 import com.swapbookx.api.services.BookService;
 
-import com.swapbookx.api.models.User;
-import com.swapbookx.api.repositories.UserRepo;
-import com.swapbookx.api.services.impl.UserServiceImpl;
+
 import com.swapbookx.api.payloads.BookDto;
 
 

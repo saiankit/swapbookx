@@ -21,11 +21,14 @@ function BorrowerDashboard() {
     setNewSearch(e.target.value)
   }
 
+  const userID = localStorage.getItem('userID')
+
+
   const filtered = !search
     ? data
     : data.filter((book) =>
         book.title.toLowerCase().includes(search.toLowerCase())
-      )
+      ).filter((book) => book.bookID.equals(userID))
 
   return (
     <>
