@@ -51,7 +51,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionDto updateTransaction(TransactionDto transactionDto, Integer transactionID) {
-        
+
         Transaction transaction = this.transactionRepo.findById(transactionID).orElseThrow(( () -> new ResourceNotFoundException("transaction","id", transactionID)));
 
         transaction.setTransactionID(transactionDto.getTransactionID());
@@ -94,32 +94,5 @@ public class TransactionServiceImpl implements TransactionService {
 
         return transactionDto;
     }
-
-    @Override
-    public List<TxReturnDto> getTxDetails(Integer userID) {
-
-        List<Transaction> transactions = this.transactionRepo.findAll();
-        List<TransactionDto> transactionDtos = transactions.stream().map(transaction->this.transactionToDto(transaction)).collect(Collectors.toList());
-        
-        List<TxReturnDto> ans = new ArrayList();
-
-        for(int i=0;i<transactionDtos.size();i++){
-            TransactionDto now = transactionDtos.get(i);
-            TxReturnDto store = new TxReturnDto();
-            if(now.getLenderID()== userID){
-                store.setTransactionID(now.getTransactionID());
-                store.setBorrowerID(now.getBorrowerID());
-                store.setBookID(now.getBookID());
-                store.setDateIssued(now.getDateIssued());
-                store.setReturnDate(now.getReturnDate());
-
-                UserDto txDetails = userService.getUserById(userID);
-
-            }
-        }
-        
-        return null;
-    }
-
 
 }

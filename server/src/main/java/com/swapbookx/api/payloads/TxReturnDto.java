@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 
-public class TotalDto {
+public class TxReturnDto {
     private int transactionID;
     private int lenderID;
     private int borrowerID;

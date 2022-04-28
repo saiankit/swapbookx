@@ -17,17 +17,49 @@ const BookDetails = ({
   const [collectionDate, setCollectionDate] = useState(null)
   const [returnDate, setReturnDate] = useState(null)
   const { bookID } = useParams()
-
-  const [data, setData] = useState([])
+  const [bookDeets, setBookDeets] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+  const [data, setData] = useState({ accepted: false })
+  const userID = localStorage.getItem('userID')
 
   useEffect(() => {
     async function fetchBooks() {
       const result = await axios('http://localhost:8080/api/books/' + bookID)
 
-      setData(result.data)
+      setBookDeets(result.data)
+      setData((inputs) => ({
+        ...inputs,
+        lenderID: result.data.lenderID,
+        borrowerID: parseInt(userID),
+        bookID: result.data.bookID,
+      }))
     }
     fetchBooks()
   })
+  const handleSubmit = (event) => {
+    setLoading(true)
+    setIsError(false)
+
+    addRequest()
+    setLoading(false)
+  }
+
+  const addRequest = async () => {
+    try {
+      console.log(data)
+      setData((inputs) => ({
+        ...inputs,
+        collectionDate: collectionDate,
+        returnDate: returnDate,
+      }))
+      const res = await axios.post('http://localhost:8080/api/requests/', data)
+
+      console.log(res)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div className="flex w-screen h-screen">
@@ -36,28 +68,28 @@ const BookDetails = ({
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Title: </h1>
-            <h1 className="font-bold">{data.title}</h1>
+            <h1 className="font-bold">{bookDeets.title}</h1>
           </div>
         </div>
 
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Author: </h1>
-            <h1 className="font-bold">{data.author}</h1>
+            <h1 className="font-bold">{bookDeets.author}</h1>
           </div>
         </div>
 
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Publisher: </h1>
-            <h1 className="font-bold">{data.publisher}</h1>
+            <h1 className="font-bold">{bookDeets.publisher}</h1>
           </div>
         </div>
 
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Edition: </h1>
-            <h1 className="font-bold">{data.edition}</h1>
+            <h1 className="font-bold">{bookDeets.edition}</h1>
           </div>
         </div>
 
@@ -66,7 +98,7 @@ const BookDetails = ({
             <h1 className="font-bold text-gray-500">
               Book Year of Publishing:{' '}
             </h1>
-            <h1 className="font-bold">{data.year}</h1>
+            <h1 className="font-bold">{bookDeets.year}</h1>
           </div>
         </div>
 
@@ -77,7 +109,13 @@ const BookDetails = ({
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
               selected={collectionDate}
-              onChange={(date) => setCollectionDate(date)}
+              onChange={(date) => {
+                setCollectionDate(date)
+                setData((inputs) => ({
+                  ...inputs,
+                  collectionDate: date.toISOString(),
+                }))
+              }}
             />
           </div>
           <span className="mx-4 text-gray-500">to</span>
@@ -87,13 +125,28 @@ const BookDetails = ({
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
               selected={returnDate}
-              onChange={(date) => setReturnDate(date)}
+              onChange={(date) => {
+                setReturnDate(date)
+                setData((inputs) => ({
+                  ...inputs,
+                  returnDate: date.toISOString(),
+                }))
+              }}
             />
           </div>
         </div>
-
+        {isError && (
+          <small className="mt-3 d-inline-block text-danger">
+            Something went wrong. Please try again later.
+          </small>
+        )}
         <Link to="/requests">
-          <button className="m-3 xl:w-60 btn-primary flex justify-center">
+          <button
+            className="m-3 xl:w-60 btn-primary flex justify-center"
+            disabled={loading}
+            type="submit"
+            onClick={handleSubmit}
+          >
             REQUEST BOOK
           </button>
         </Link>
@@ -104,7 +157,7 @@ const BookDetails = ({
           <img
             alt="Book Image"
             className="rounded-lg shadow-xl object-contain h-96"
-            src={data.imageSrc}
+            src={bookDeets.imageSrc}
           />
         </div>
       </div>
