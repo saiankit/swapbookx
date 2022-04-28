@@ -102,9 +102,9 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionDto;
     }
 
-    @Override
-    public List<TxReturnDto> getTxDetails(Integer userID) {
 
+    @Override
+    public List<TxReturnDto> getTxLender(Integer lenderID) {
         List<Transaction> transactions = this.transactionRepo.findAll();
         List<TransactionDto> transactionDtos = transactions.stream().map(transaction->this.transactionToDto(transaction)).collect(Collectors.toList());
 
@@ -113,7 +113,7 @@ public class TransactionServiceImpl implements TransactionService {
         for(int i=0;i<transactionDtos.size();i++){
             TransactionDto now = transactionDtos.get(i);
             TxReturnDto store = new TxReturnDto();
-            if(now.getLenderID()== userID){
+            if(now.getLenderID()== lenderID){
                 store.setTransactionID(now.getTransactionID());
                 store.setBorrowerID(now.getBorrowerID());
                 store.setBookID(now.getBookID());
@@ -126,11 +126,48 @@ public class TransactionServiceImpl implements TransactionService {
                 store.setImageSrc(bkDetails.getImageSrc());
 
 
-                UserDto txDetails = userService.getUserById(userID);
+                UserDto txDetails = userService.getUserById(lenderID);
                 store.setLenderName(txDetails.getName());
 
                 txDetails = userService.getUserById(now.getBorrowerID());
                 store.setBorrowerName(txDetails.getName());
+
+                ans.add(store);
+            }
+        }
+
+        return ans;
+    }
+
+    @Override
+    public List<TxReturnDto> getTxBorrower(Integer borrowerID) {
+        List<Transaction> transactions = this.transactionRepo.findAll();
+        List<TransactionDto> transactionDtos = transactions.stream().map(transaction->this.transactionToDto(transaction)).collect(Collectors.toList());
+
+        List<TxReturnDto> ans = new ArrayList();
+
+        for(int i=0;i<transactionDtos.size();i++){
+            TransactionDto now = transactionDtos.get(i);
+            TxReturnDto store = new TxReturnDto();
+            if(now.getBorrowerID()== borrowerID){
+                store.setTransactionID(now.getTransactionID());
+                store.setBorrowerID(now.getBorrowerID());
+                store.setBookID(now.getBookID());
+                store.setDateIssued(now.getDateIssued());
+                store.setReturnDate(now.getReturnDate());
+
+                BookDto bkDetails = bookService.getBookById(now.getBookID());
+                store.setTitle(bkDetails.getTitle());
+                store.setAuthor(bkDetails.getAuthor());
+                store.setImageSrc(bkDetails.getImageSrc());
+
+
+                UserDto txDetails = userService.getUserById(borrowerID);
+                store.setBorrowerName(txDetails.getName());
+
+                txDetails = userService.getUserById(now.getLenderID());
+                store.setLenderName(txDetails.getName());
+
 
                 ans.add(store);
             }

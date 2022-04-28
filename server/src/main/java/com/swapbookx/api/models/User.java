@@ -43,4 +43,7 @@ public class User {
     @Column(name="user_isAdmin")
     private Boolean isAdmin;
 
+    @Column(name="user_balance")
+    private int balance;
+
 }

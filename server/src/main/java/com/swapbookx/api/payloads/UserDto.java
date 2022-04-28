@@ -17,4 +17,5 @@ public class UserDto {
     private String address;
     private String phoneNumber;
     private Boolean isAdmin;
+    private int balance;
 }

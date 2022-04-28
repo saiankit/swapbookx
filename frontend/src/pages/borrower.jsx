@@ -11,7 +11,6 @@ const userID = localStorage.getItem('userID')
   useEffect(() => {
     async function fetchBooks() {
       const result = await axios('http://localhost:8080/api/books/')
-
       setData(result.data)
     }
     fetchBooks()
@@ -21,14 +20,12 @@ const userID = localStorage.getItem('userID')
     setNewSearch(e.target.value)
   }
 
-  const userID = localStorage.getItem('userID')
-
 
   const filtered = !search
     ? data
     : data.filter((book) =>
         book.title.toLowerCase().includes(search.toLowerCase())
-      ).filter((book) => book.bookID.equals(userID))
+      )
 
   return (
     <>

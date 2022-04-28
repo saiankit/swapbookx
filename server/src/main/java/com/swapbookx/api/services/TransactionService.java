@@ -14,6 +14,7 @@ public interface TransactionService {
 
     TransactionDto updateTransaction(TransactionDto transactionDto, Integer transactionID);
 
-    List<TxReturnDto> getTxDetails(Integer userID);
+    List<TxReturnDto> getTxLender(Integer lenderID);
+    List<TxReturnDto> getTxBorrower(Integer borrowerID);
 
 }

@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
 @RequestMapping("/api/transactions")
+@CrossOrigin(origins="*")
 public class TransactionController {
     
     @Autowired
@@ -41,11 +42,15 @@ public class TransactionController {
         return ResponseEntity.ok(updateTransaction);
     }
 
-    @GetMapping("/txDetails/{lenderID}")
-    public ResponseEntity<List<TxReturnDto>> getTxDetails(@PathVariable("lenderID") Integer lenderID){
-        return ResponseEntity.ok(this.transactionService.getTxDetails(lenderID));
+    @GetMapping("/lender/{lenderID}")
+    public ResponseEntity<List<TxReturnDto>> getTxLender(@PathVariable("lenderID") Integer lenderID){
+        return ResponseEntity.ok(this.transactionService.getTxLender(lenderID));
     }
 
+    @GetMapping("/borrower/{borrowerID}")
+    public ResponseEntity<List<TxReturnDto>> getTxBorrower(@PathVariable("borrowerID") Integer borrowerID){
+        return ResponseEntity.ok(this.transactionService.getTxBorrower(borrowerID));
+    }
     //Get
     @GetMapping("/")
     public ResponseEntity<List<TransactionDto>> getAllTransactions(){

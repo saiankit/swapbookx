@@ -1,9 +1,6 @@
 import React from 'react'
 
-import RequestsCardBorrower from './borrower.requests'
-import RequestsCardLender from './lender.requests'
-
-const RequestsCard = ({
+const TransactionCard = ({
   title,
   author,
   imageSrc,
@@ -13,9 +10,8 @@ const RequestsCard = ({
   lenderName,
   borrowerID,
   borrowerName,
-  dateIssued,
+  collectionDate,
   returnDate,
-  bookID
 }) => {
   return (
     <div className="w-full flex flex-col items-center bg-white rounded-lg shadow-xl h-full">
@@ -50,7 +46,7 @@ const RequestsCard = ({
             </div>
             <div className="flex justify-between w-full">
               <h5 className=" w-full  text-lg font-semibold tracking-tight text-gray-900">
-                {dateIssued}
+                {collectionDate}
               </h5>
               <span className="w-full text-gray-500">to</span>
               <h5 className=" w-full  text-lg font-semibold tracking-tight text-gray-900">
@@ -66,14 +62,9 @@ const RequestsCard = ({
             />
           </div>
         </div>
-        {isLender ? (
-          <RequestsCardLender bookID = {bookID} requestID = {requestID} lenderID= {lenderID} borrowerID= {borrowerID} dateIssued= {dateIssued} returnDate =  {returnDate} />
-        ) : (
-          <RequestsCardBorrower bookID = {bookID} requestID = {requestID} lenderID= {lenderID} borrowerID= {borrowerID} dateIssued= {dateIssued} returnDate =  {returnDate} />
-        )}
       </div>
     </div>
   )
 }
 
-export default RequestsCard
+export default TransactionCard

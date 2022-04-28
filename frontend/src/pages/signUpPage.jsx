@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import LogoDark from '../assets/icons/logoDark'
 
 const SignUpPage = () => {
-  const [formValue, setformValue] = useState({ isAdmin: false })
+  const [formValue, setformValue] = useState({ isAdmin: false, balance: 50 })
   const [loading, setLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 

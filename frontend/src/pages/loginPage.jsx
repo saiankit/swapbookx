@@ -77,7 +77,7 @@ const LoginPage = () => {
               <input
                 required
                 autoComplete="current-password"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="mb-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 id="password"
                 name="password"
                 placeholder="Please enter password"
@@ -87,12 +87,12 @@ const LoginPage = () => {
               />
             </div>
           </div>
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <div className="flex items-center" />
             <div className="text-sm font-medium text-orange-600 hover:text-orange-500">
               Forgot your password?
             </div>
-          </div>
+          </div> */}
           {isError && (
             <small className="mt-3 d-inline-block text-danger">
               Something went wrong. Please try again later.

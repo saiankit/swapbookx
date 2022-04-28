@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from 'react'
 import axios from 'axios'
 
-import RequestsCard from '../components/RequestsCard'
+import TransactionCard from '../components/TransactionCard/index'
 
-function BorrowerRequests() {
+function LenderTx() {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function BorrowerRequests() {
 
     async function fetchRequests() {
       const result = await axios(
-        'http://localhost:8080/api/requests/borrower/' + userID
+        'http://localhost:8080/api/transactions/lender/' + userID
       )
 
       setData(result.data)
@@ -24,14 +24,14 @@ function BorrowerRequests() {
     <div className="flex flex-col">
       {data.map((request, index) => {
         return (
-          <RequestsCard
+          <TransactionCard
             key={index}
             author={request.author}
             borrowerID={request.borrowerID}
             borrowerName={request.borrowerName}
-            dateIssued={request.dateIssued}
+            collectionDate={request.dateIssued}
             imageSrc={request.imageSrc}
-            isLender={false}
+            isLender={true}
             lenderID={request.lenderID}
             lenderName={request.lenderName}
             requestID={request.requestID}
@@ -45,4 +45,4 @@ function BorrowerRequests() {
   )
 }
 
-export default BorrowerRequests
+export default LenderTx

@@ -15,6 +15,7 @@ function Sidebar() {
   let borrower = false
   let requests = false
   let transactions = false
+  let profile = false
 
   if (path === '/lender') {
     lender = true
@@ -26,6 +27,8 @@ function Sidebar() {
     lender = true
   } else if (path === '/transactions') {
     transactions = true
+  } else if (path === '/profile') {
+    profile = true
   } else {
     borrower = true
   }
@@ -90,6 +93,31 @@ function Sidebar() {
               </div>
             </li>
           </Link>
+
+          <Link to="/">
+            <li
+              className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
+                transactions && 'bg-gray-700'
+              }`}
+            >
+              <div className="flex items-center">
+                <span className="text-md text-red-300 ml-2">LOG OUT</span>
+              </div>
+            </li>
+          </Link>
+
+          <Link to="/profile">
+            <li
+              className={`flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 ${
+                profile && 'bg-gray-700'
+              }`}
+            >
+              <div className="flex items-center">
+                <span className="text-md ml-2">PROFILE</span>
+              </div>
+            </li>
+          </Link>
+
         </ul>
       </div>
     </div>

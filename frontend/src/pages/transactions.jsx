@@ -1,20 +1,14 @@
 import React from 'react'
+import SideBar from '../components/sidebar'
+import TxTabsRender from './txTabs'
 
-import Sidebar from '../components/sidebar'
-import TransactionCard from '../components/transactionCard'
 
 function TransactionsDashboard() {
   return (
     <div className="flex">
-      <Sidebar />
+      <SideBar />
       <div className="pl-64 m-0 overflow-hidden flex flex-col overflow-y-scroll items-center py-12 h-full w-full">
-        <TransactionCard
-          bookID={121}
-          bookTitle={'Harry'}
-          borrower={'asdasd'}
-          borrowerID={1}
-          lenderID={2}
-        />
+        <TxTabsRender />
       </div>
     </div>
   )

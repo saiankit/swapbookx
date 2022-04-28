@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.swapbookx.api.payloads.LoginDto;
 import com.swapbookx.api.payloads.UserDto;
+
+import org.apache.catalina.User;
+
 import com.swapbookx.api.payloads.LoginDto;
 
 public interface UserService {

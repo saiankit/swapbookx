@@ -1,7 +1,6 @@
 import './App.css'
 import React from 'react'
 
-// import LenderDashboard from './pages/lender.jsx';
 import { Routes, Route } from 'react-router-dom'
 
 import LenderDashboard from './pages/lender'
@@ -14,6 +13,8 @@ import ConfirmBook from './pages/confirmBook'
 import LoginPage from './pages/loginPage'
 import SignUpPage from './pages/signUpPage'
 import BookDetails from './pages/bookDetail'
+import UserProfile from './pages/userProfile'
+import AdminPage from './pages/admin'
 
 export default function App() {
   return (
@@ -29,6 +30,8 @@ export default function App() {
         <Route element={<ConfirmBook />} path="/lender/confirmBook" />
         <Route element={<TransactionsDashboard />} path="/transactions" />
         <Route element={<BookDetails />} path="/borrower/book/:bookID" />
+        <Route element={<UserProfile/>} path="/profile" />
+        <Route element={<AdminPage/>} path="/admin" />
       </Routes>
     </>
   )

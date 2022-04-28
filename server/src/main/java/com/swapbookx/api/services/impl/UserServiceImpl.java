@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         user.setAddress(userDto.getAddress());
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setUserName(userDto.getUserName());
-
+        user.setBalance(userDto.getBalance());
         User updatedUser = this.userRepo.save(user);
 
         UserDto updatedUserDto = this.userToDto(updatedUser);
@@ -100,6 +100,7 @@ public class UserServiceImpl implements UserService {
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setUserName(userDto.getUserName());
         user.setIsAdmin(userDto.getIsAdmin());
+        user.setBalance(userDto.getBalance());
 
         return user;
     }
@@ -115,6 +116,7 @@ public class UserServiceImpl implements UserService {
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setUserName(user.getUserName());
         userDto.setIsAdmin(user.getIsAdmin());
+        userDto.setBalance(user.getBalance());
 
         return userDto;
     }

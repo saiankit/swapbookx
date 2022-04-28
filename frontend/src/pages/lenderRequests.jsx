@@ -29,7 +29,7 @@ function LenderRequests() {
             author={request.author}
             borrowerID={request.borrowerID}
             borrowerName={request.borrowerName}
-            collectionDate={request.dateIssued}
+            dateIssued={request.dateIssued}
             imageSrc={request.imageSrc}
             isLender={true}
             lenderID={request.lenderID}
@@ -37,6 +37,7 @@ function LenderRequests() {
             requestID={request.requestID}
             returnDate={request.returnDate}
             title={request.title}
+            bookID = {request.bookID}
           />
         )
       })}
