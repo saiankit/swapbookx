@@ -1,21 +1,30 @@
 package com.swapbookx.api.payloads;
 
-import java.util.Date;
-
+import java.util.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-@Getter
 @Setter
-public class RequestDto {
+@Getter
+
+public class ReqReturnDto {
     private int requestID;
     private int lenderID;
     private int borrowerID;
     private int bookID;
     private Date dateIssued;
     private Date returnDate;
-    private Boolean accepted;
+
+    private String title;
+    private String author;
+    private String imageSrc;
+
+
+
+    private String lenderName;
+
+    private String borrowerName;
 }

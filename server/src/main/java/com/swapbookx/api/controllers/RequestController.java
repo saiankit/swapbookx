@@ -3,6 +3,7 @@ package com.swapbookx.api.controllers;
 import java.util.List;
 
 import com.swapbookx.api.payloads.ApiResponse;
+import com.swapbookx.api.payloads.ReqReturnDto;
 import com.swapbookx.api.payloads.RequestDto;
 import com.swapbookx.api.services.RequestService;
 
@@ -33,10 +34,14 @@ public class RequestController {
     }
     // get all requests of a lender
     @GetMapping("/lender/{lenderID}")
-    public ResponseEntity<List<RequestDto>> getRequestsLender(@PathVariable("lenderID") Integer userID){
-        List<RequestDto> getOwnerDeltails = this.requestService.getRequestsLender(userID);
+    public ResponseEntity<List<ReqReturnDto>> getReqDetails(@PathVariable("lenderID") Integer lenderID){
+        return ResponseEntity.ok(this.requestService.getReqDetails(lenderID));
+    }
 
-        return new ResponseEntity<>(getOwnerDeltails, HttpStatus.CREATED);
+    //all req of a lender
+    @GetMapping("/bookReq/{bookID}")
+    public ResponseEntity<Integer> getReqOnBook(@PathVariable("bookID") Integer bookID){
+        return ResponseEntity.ok(this.requestService.getReqOnBook(bookID));
     }
 
     // get all requests of a borrower

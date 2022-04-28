@@ -35,7 +35,7 @@ public class Request {
     private int bookID;
 
     @Column(name="collection_date", nullable = false)
-    private Date collectionDate;
+    private Date dateIssued;
 
     @Column(name="return_date", nullable = false)
     private Date returnDate;

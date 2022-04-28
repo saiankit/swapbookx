@@ -10,9 +10,10 @@ import lombok.Setter;
 @Setter
 @Getter
 
-public class TotalDto {
+public class TxReturnDto {
+
+
     private int transactionID;
-    private int lenderID;
     private int borrowerID;
     private int bookID;
     private Date dateIssued;
@@ -20,16 +21,11 @@ public class TotalDto {
 
     private String title;
     private String author;
-    private String genre;
     private String imageSrc;
 
 
 
-    private String lenderUserName;
     private String lenderName;
-    private String lenderEmail;
 
-    private String borrowerUserName;
     private String borrowerName;
-    private String borrowerEmail;
 }

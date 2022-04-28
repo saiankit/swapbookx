@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.swapbookx.api.payloads.ApiResponse;
 import com.swapbookx.api.payloads.TransactionDto;
+import com.swapbookx.api.payloads.TxReturnDto;
 import com.swapbookx.api.services.TransactionService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +39,11 @@ public class TransactionController {
     {
         TransactionDto updateTransaction = this.transactionService.updateTransaction(transactionDto, transactionID);
         return ResponseEntity.ok(updateTransaction);
+    }
+
+    @GetMapping("/txDetails/{lenderID}")
+    public ResponseEntity<List<TxReturnDto>> getTxDetails(@PathVariable("lenderID") Integer lenderID){
+        return ResponseEntity.ok(this.transactionService.getTxDetails(lenderID));
     }
 
     //Get
