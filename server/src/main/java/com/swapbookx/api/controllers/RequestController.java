@@ -35,7 +35,9 @@ public class RequestController {
     // get all requests of a lender
     @GetMapping("/lender/{lenderID}")
     public ResponseEntity<List<ReqReturnDto>> getReqDetails(@PathVariable("lenderID") Integer lenderID){
-        return ResponseEntity.ok(this.requestService.getReqDetails(lenderID));
+        List<ReqReturnDto> getRequests = this.requestService.getReqDetails(lenderID);
+
+        return new ResponseEntity<>(getRequests, HttpStatus.CREATED);
     }
 
     //all req of a lender
