@@ -15,7 +15,7 @@ public class RequestDto {
     private int lenderID;
     private int borrowerID;
     private int bookID;
-    private String collectionDate;
+    private Date collectionDate;
     private Date returnDate;
     private Boolean accepted;
 }

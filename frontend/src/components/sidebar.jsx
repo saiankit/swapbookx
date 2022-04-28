@@ -24,8 +24,10 @@ function Sidebar() {
     requests = true
   } else if (path === '/lender/addBook') {
     lender = true
-  } else {
+  } else if (path === '/transactions') {
     transactions = true
+  } else {
+    borrower = true
   }
 
   return (
@@ -44,6 +46,7 @@ function Sidebar() {
                 lender && 'bg-gray-700'
               }`}
             >
+              {}
               <div className="flex items-center">
                 <LenderIcon />
                 <span className="text-md  ml-2">Lender Dashboard</span>

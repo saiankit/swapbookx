@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import LogoDark from '../assets/icons/logoDark'
 
 const SignUpPage = () => {
-  const [formValue, setformValue] = useState({})
+  const [formValue, setformValue] = useState({ isAdmin: false })
   const [loading, setLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
@@ -16,11 +16,24 @@ const SignUpPage = () => {
     setformValue((inputs) => ({
       ...inputs,
     }))
+    sendLoginRequest()
+    setLoading(false)
+  }
 
-    axios.post('http://localhost:8080/api/users/', formValue).then((res) => {
+  const sendLoginRequest = async () => {
+    try {
+      console.log(formValue)
+      const res = await axios.post(
+        'http://localhost:8080/api/users/register',
+        formValue
+      )
+
       console.log(res)
-      setLoading(false)
-    })
+
+      localStorage.setItem('userID', res.data.userID)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const handleInputChange = (event) => {

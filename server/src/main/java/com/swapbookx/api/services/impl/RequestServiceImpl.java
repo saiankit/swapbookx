@@ -54,6 +54,7 @@ public class RequestServiceImpl implements RequestService {
         request.setReturnDate(requestDto.getReturnDate());
         request.setAccepted(requestDto.getAccepted());
         request.setBorrowerID(requestDto.getBorrowerID());
+        request.setBookID(requestDto.getBookID());
 
         return request;
     }
@@ -117,5 +118,5 @@ public class RequestServiceImpl implements RequestService {
 
         return ans;
     }
-    
+
 }

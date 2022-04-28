@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import 'react-datepicker/dist/react-datepicker.css'
 import DatePicker from 'react-datepicker'
 import axios from 'axios'
+
+import Sidebar from '../components/sidebar'
 const BookDetails = ({
   bookTitle,
   bookAuthor,
@@ -29,11 +31,12 @@ const BookDetails = ({
 
   return (
     <div className="flex w-screen h-screen">
-      <div className="w-2/3 flex flex-col justify-center items-center">
+      <Sidebar />
+      <div className="pl-72 m-0 overflow-hidden flex flex-col overflow-y-scroll justify-center items-center py-12 h-full w-full">
         <div className="m-3 xl:w-96">
           <div className="flex space-x-4">
             <h1 className="font-bold text-gray-500">Book Title: </h1>
-            <h1 className="font-bold">{bookID}</h1>
+            <h1 className="font-bold">{data.title}</h1>
           </div>
         </div>
 
@@ -101,7 +104,7 @@ const BookDetails = ({
           <img
             alt="Book Image"
             className="rounded-lg shadow-xl object-contain h-96"
-            src="https://images-na.ssl-images-amazon.com/images/I/9167i2ioFaS.jpg"
+            src={data.imageSrc}
           />
         </div>
       </div>

@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Request {
-    
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,17 +33,14 @@ public class Request {
 
     @Column(name="book_ID", nullable = false)
     private int bookID;
-    
-    @Column(name="collection_date", nullable = false)
-    private String collectionDate;
 
-    @Column(name="collection_place", nullable = false)
-    private String collectionPlace;
+    @Column(name="collection_date", nullable = false)
+    private Date collectionDate;
 
     @Column(name="return_date", nullable = false)
     private Date returnDate;
 
-    @Column(name="accepted", nullable = false)
+    @Column(name="accepted")
     private Boolean accepted;
 
 }

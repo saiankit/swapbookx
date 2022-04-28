@@ -20,7 +20,7 @@ const BookCard = ({ title, author, imageSrc, isLender, bookID }) => {
             {title}
           </h5>
           <h5 className="text-md tracking-tight text-gray-900 ">{author}</h5>
-          {isLender ? <BookCardLender /> : <BookCardBorrower />}
+          {isLender ? <BookCardLender bookID = {bookID}/> : <BookCardBorrower />}
         </div>
       </div>
     </Link>
