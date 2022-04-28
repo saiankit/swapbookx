@@ -40,19 +40,21 @@ public class RequestController {
         return new ResponseEntity<>(getRequests, HttpStatus.CREATED);
     }
 
+    // get all requests of a borrower
+    @GetMapping("/borrower/{borrowerID}")
+    public ResponseEntity<List<ReqReturnDto>> getRequestsBorrower(@PathVariable("borrowerID") Integer borrowerID){
+        List<ReqReturnDto> getBorrowerRequests = this.requestService.getRequestsBorrower(borrowerID);
+
+        return new ResponseEntity<>(getBorrowerRequests, HttpStatus.CREATED);
+    }
+
     //all req of a lender
     @GetMapping("/bookReq/{bookID}")
     public ResponseEntity<Integer> getReqOnBook(@PathVariable("bookID") Integer bookID){
         return ResponseEntity.ok(this.requestService.getReqOnBook(bookID));
     }
 
-    // get all requests of a borrower
-    @GetMapping("/borrower/{borrowerID}")
-    public ResponseEntity<List<RequestDto>> getRequestsBorrower(@PathVariable("borrowerID") Integer userID){
-        List<RequestDto> getOwnerDeltails = this.requestService.getRequestsBorrower(userID);
 
-        return new ResponseEntity<>(getOwnerDeltails, HttpStatus.CREATED);
-    }
 
     //Delete
     @DeleteMapping("/{requestID}")

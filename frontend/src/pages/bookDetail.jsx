@@ -113,7 +113,7 @@ const BookDetails = ({
                 setCollectionDate(date)
                 setData((inputs) => ({
                   ...inputs,
-                  collectionDate: date.toISOString(),
+                  dateIssued: date.toISOString(),
                 }))
               }}
             />

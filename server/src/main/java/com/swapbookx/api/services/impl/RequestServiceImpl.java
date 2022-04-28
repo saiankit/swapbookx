@@ -103,9 +103,6 @@ public class RequestServiceImpl implements RequestService {
         List<RequestDto> requestDtos = requests.stream().map(request->this.requestToDto(request)).collect(Collectors.toList());
 
         List<ReqReturnDto> ans = new ArrayList();
-
-
-
         for(int i=0;i<requestDtos.size();i++){
             RequestDto now = requestDtos.get(i);
             ReqReturnDto store = new ReqReturnDto();
@@ -115,6 +112,7 @@ public class RequestServiceImpl implements RequestService {
                 store.setBorrowerID(now.getBorrowerID());
                 store.setDateIssued(now.getDateIssued());
                 store.setReturnDate(now.getReturnDate());
+                store.setLenderID(now.getLenderID());
 
                 BookDto bkDetails = bookService.getBookById(now.getBookID());
                 store.setTitle(bkDetails.getTitle());
@@ -124,39 +122,54 @@ public class RequestServiceImpl implements RequestService {
 
                 UserDto txDetails = userService.getUserById(lenderID);
                 store.setLenderName(txDetails.getName());
-                
+
                 txDetails = userService.getUserById(now.getBorrowerID());
                 store.setBorrowerName(txDetails.getName());
 
                 ans.add(store);
             }
         }
-        System.out.println("Hhhhhh");
         return ans;
     }
 
     //get req of a borrower
     @Override
-    public List<RequestDto> getRequestsBorrower(Integer borrowerID) {
-
-        List<RequestDto> ans = new ArrayList();
+    public List<ReqReturnDto> getRequestsBorrower(Integer borrowerID) {
 
         List<Request> requests = this.requestRepo.findAll();
-
         List<RequestDto> requestDtos = requests.stream().map(request->this.requestToDto(request)).collect(Collectors.toList());
 
+        List<ReqReturnDto> ans = new ArrayList();
         for(int i=0;i<requestDtos.size();i++){
-            if(requestDtos.get(i).getBorrowerID()==borrowerID){
-                ans.add(requestDtos.get(i));
+            RequestDto now = requestDtos.get(i);
+            ReqReturnDto store = new ReqReturnDto();
+            if(now.getBorrowerID()==borrowerID) {
+                store.setRequestID(now.getRequestID());
+                store.setBookID(now.getBookID());
+                store.setLenderID(now.getLenderID());
+                store.setDateIssued(now.getDateIssued());
+                store.setReturnDate(now.getReturnDate());
+                store.setBorrowerID(now.getBorrowerID());
+                BookDto bkDetails = bookService.getBookById(now.getBookID());
+                store.setTitle(bkDetails.getTitle());
+                store.setAuthor(bkDetails.getAuthor());
+                store.setImageSrc(bkDetails.getImageSrc());
+
+
+                UserDto borrowerDetails = userService.getUserById(borrowerID);
+                store.setBorrowerName(borrowerDetails.getName());
+
+                borrowerDetails = userService.getUserById(now.getLenderID());
+                store.setLenderName(borrowerDetails.getName());
+                ans.add(store);
             }
         }
-
         return ans;
     }
 
     @Override
     public int getReqOnBook(Integer bookID) {
-        
+
         List<RequestDto> allReq = this.getAllRequests();
         int cou =0;
 
@@ -170,7 +183,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
 
-    
+
 
 
 }
