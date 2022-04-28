@@ -1,9 +1,49 @@
-import React from 'react'
+import { React, useState } from 'react'
+import axios from 'axios'
+/* eslint handle-callback-err: "warn" */
 import { Link } from 'react-router-dom'
 
 import LogoDark from '../assets/icons/logoDark'
 
 const LoginPage = () => {
+  const [formValue, setformValue] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+
+  const handleSubmit = (event) => {
+    setLoading(true)
+    setIsError(false)
+    setformValue((inputs) => ({
+      ...inputs,
+    }))
+    sendLoginRequest()
+    setLoading(false)
+  }
+
+  const sendLoginRequest = async () => {
+    try {
+      console.log(formValue)
+      const res = await axios.post(
+        'http://localhost:8080/api/users/login',
+        formValue
+      )
+
+      console.log(res)
+
+      localStorage.setItem('userID', res.data.userID)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleInputChange = (event) => {
+    event.persist()
+    setformValue((inputs) => ({
+      ...inputs,
+      [event.target.id]: event.target.value,
+    }))
+  }
+
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm w-full space-y-8">
@@ -21,12 +61,13 @@ const LoginPage = () => {
               </label>
               <input
                 required
-                autoComplete="email"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                id="email-address"
-                name="email"
-                placeholder="Email address"
-                type="email"
+                id="userName"
+                name="userName"
+                placeholder="Please enter username"
+                type="text"
+                value={formValue.userName}
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -39,8 +80,10 @@ const LoginPage = () => {
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 id="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Please enter password"
                 type="password"
+                value={formValue.password}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -50,9 +93,19 @@ const LoginPage = () => {
               Forgot your password?
             </div>
           </div>
+          {isError && (
+            <small className="mt-3 d-inline-block text-danger">
+              Something went wrong. Please try again later.
+            </small>
+          )}
           <Link to="/lender">
-            <button className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-800 hover:bg-orange-700 ">
-              SIGN IN
+            <button
+              className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-800 hover:bg-orange-700 "
+              disabled={loading}
+              type="submit"
+              onClick={handleSubmit}
+            >
+              {loading ? 'Loading...' : 'SIGN IN'}
             </button>
           </Link>
           <div className="flex items-center justify-between pb-2">

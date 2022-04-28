@@ -11,8 +11,6 @@ const AddBook = () => {
       ...inputs,
       [event.target.id]: event.target.value,
     }))
-
-    console.log(bookInfo)
   }
 
   return (
@@ -26,10 +24,10 @@ const AddBook = () => {
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="bookTitle"
+            id="title"
             placeholder="Enter Book Title"
             type="text"
-            value={bookInfo.bookTitle}
+            value={bookInfo.title}
             onChange={handleInputChange}
           />
         </div>
@@ -37,40 +35,40 @@ const AddBook = () => {
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="bookAuthor"
+            id="author"
             placeholder="Enter Author Name"
             type="text"
-            value={bookInfo.bookAuthor}
+            value={bookInfo.author}
             onChange={handleInputChange}
           />
         </div>
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="bookPublisher"
+            id="publisher"
             placeholder="Enter Publisher"
             type="text"
-            value={bookInfo.bookPublisher}
+            value={bookInfo.publisher}
             onChange={handleInputChange}
           />
         </div>
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="bookEdition"
+            id="edition"
             placeholder="Enter Edition"
             type="text"
-            value={bookInfo.bookEdition}
+            value={bookInfo.edition}
             onChange={handleInputChange}
           />
         </div>
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="bookYearOfPublishing"
+            id="year"
             placeholder="Enter Year of Publishing"
             type="text"
-            value={bookInfo.bookYearOfPublishing}
+            value={bookInfo.year}
             onChange={handleInputChange}
           />
         </div>
@@ -78,10 +76,10 @@ const AddBook = () => {
         <div className="m-3 xl:w-96">
           <input
             className="form-input"
-            id="bookCover"
+            id="imageSrc"
             placeholder="Enter Book Cover URI"
             type="text"
-            value={bookInfo.bookCover}
+            value={bookInfo.imageSrc}
             onChange={handleInputChange}
           />
         </div>
@@ -89,8 +87,8 @@ const AddBook = () => {
         <div className="m-3 xl:w-96">
           <select
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            id="bookGenre"
-            value={bookInfo.bookGenre}
+            id="genre"
+            value={bookInfo.genre}
             onChange={handleInputChange}
           >
             <option selected="">Choose a Genre</option>

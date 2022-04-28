@@ -1,34 +1,36 @@
-import {React, useState, useEffect} from 'react'
+import { React, useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
+import axios from 'axios'
 
 import Sidebar from '../components/sidebar'
 const ConfirmBook = () => {
   const location = useLocation()
-  const {
-    bookTitle,
-    bookAuthor,
-    bookEdition,
-    bookPublisher,
-    bookYearOfPublishing,
-    bookCover,
-    bookGenre,
-  } = location.state.bookInfo
-const [formValue, setformValue] = useState({})
+  const userID = localStorage.getItem('userID')
+  const { title, author, edition, publisher, year, imageSrc, genre } =
+    location.state.bookInfo
+  const [formValue] = useState({
+    lenderID: userID,
+    title: title,
+    author: author,
+    edition: edition,
+    publisher: publisher,
+    year: year,
+    imageSrc: imageSrc,
+    genre: genre,
+  })
   const [loading, setLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
 
   const handleSubmit = (event) => {
     setLoading(true)
-    setIsError(false)
-    setformValue((inputs) => ({
-      ...inputs,
-    }))
 
-    axios.post('http://localhost:8080/api/users/', formValue).then((res) => {
+    console.log(formValue)
+
+    axios.post('http://localhost:8080/api/books/', formValue).then((res) => {
       console.log(res)
       setLoading(false)
     })
   }
+
   return (
     <div className="flex w-screen">
       <Sidebar />
@@ -41,48 +43,51 @@ const [formValue, setformValue] = useState({})
           <div className="m-3 xl:w-96">
             <div className="flex space-x-4">
               <h1 className="font-bold">Book Title: </h1>
-              <h1>{bookTitle}</h1>
+              <h1>{title}</h1>
             </div>
           </div>
 
           <div className="m-3 xl:w-96">
             <div className="flex space-x-4">
               <h1 className="font-bold">Book Author: </h1>
-              <h1>{bookAuthor}</h1>
+              <h1>{author}</h1>
             </div>
           </div>
 
           <div className="m-3 xl:w-96">
             <div className="flex space-x-4">
               <h1 className="font-bold">Book Publisher: </h1>
-              <h1>{bookPublisher}</h1>
+              <h1>{publisher}</h1>
             </div>
           </div>
 
           <div className="m-3 xl:w-96">
             <div className="flex space-x-4">
               <h1 className="font-bold">Book Edition: </h1>
-              <h1>{bookEdition}</h1>
+              <h1>{edition}</h1>
             </div>
           </div>
 
           <div className="m-3 xl:w-96">
             <div className="flex space-x-4">
               <h1 className="font-bold">Book Year of Publishing: </h1>
-              <h1>{bookYearOfPublishing}</h1>
+              <h1>{year}</h1>
             </div>
           </div>
 
           <div className="m-3 xl:w-96">
             <div className="flex space-x-4">
               <h1 className="font-bold">Book Genre: </h1>
-              <h1>{bookGenre}</h1>
+              <h1>{genre}</h1>
             </div>
           </div>
           <Link to="/lender">
             <button
-            
-            className="m-3 xl:w-60 btn-primary flex justify-center">
+              className="m-3 xl:w-60 btn-primary flex justify-center"
+              disabled={loading}
+              type="submit"
+              onClick={handleSubmit}
+            >
               CONFIRM
             </button>
           </Link>
@@ -92,7 +97,7 @@ const [formValue, setformValue] = useState({})
           <img
             alt="Book Image"
             className="rounded-lg shadow-xl object-contain h-60"
-            src={bookCover}
+            src={imageSrc}
           />
         </div>
       </div>

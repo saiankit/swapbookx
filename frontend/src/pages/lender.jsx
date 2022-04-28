@@ -12,8 +12,12 @@ function LenderDashboard() {
   const [data, setData] = useState([])
 
   useEffect(() => {
+    const userID = localStorage.getItem('userID')
+
     async function fetchBooks() {
-      const result = await axios('http://localhost:8080/api/books/')
+      const result = await axios(
+        'http://localhost:8080/api/books/owner/' + userID
+      )
 
       setData(result.data)
     }
