@@ -1,11 +1,19 @@
 package com.swapbookx.api.services.impl;
 
+import com.swapbookx.api.services.UserService;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.swapbookx.api.exceptions.ResourceNotFoundException;
 import com.swapbookx.api.models.Transaction;
+import com.swapbookx.api.models.User;
+import com.swapbookx.api.repositories.UserRepo;
+import com.swapbookx.api.services.UserService;
 import com.swapbookx.api.payloads.TransactionDto;
+import com.swapbookx.api.payloads.TxReturnDto;
+import com.swapbookx.api.payloads.UserDto;
 import com.swapbookx.api.repositories.TransactionRepo;
 import com.swapbookx.api.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +24,8 @@ import org.springframework.stereotype.Service;
 public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRepo transactionRepo;
+
+    private UserService userService;
 
     @Override
     public TransactionDto createTransaction(TransactionDto transactionDto) {
@@ -84,5 +94,32 @@ public class TransactionServiceImpl implements TransactionService {
 
         return transactionDto;
     }
+
+    @Override
+    public List<TxReturnDto> getTxDetails(Integer userID) {
+
+        List<Transaction> transactions = this.transactionRepo.findAll();
+        List<TransactionDto> transactionDtos = transactions.stream().map(transaction->this.transactionToDto(transaction)).collect(Collectors.toList());
+        
+        List<TxReturnDto> ans = new ArrayList();
+
+        for(int i=0;i<transactionDtos.size();i++){
+            TransactionDto now = transactionDtos.get(i);
+            TxReturnDto store = new TxReturnDto();
+            if(now.getLenderID()== userID){
+                store.setTransactionID(now.getTransactionID());
+                store.setBorrowerID(now.getBorrowerID());
+                store.setBookID(now.getBookID());
+                store.setDateIssued(now.getDateIssued());
+                store.setReturnDate(now.getReturnDate());
+
+                UserDto txDetails = userService.getUserById(userID);
+
+            }
+        }
+        
+        return null;
+    }
+
 
 }
