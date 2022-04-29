@@ -52,6 +52,7 @@ function LenderDashboard() {
                   imageSrc={book.imageSrc}
                   isLender={true}
                   title={book.title}
+                  genre = {book.genre}
                 />
               )
             })}

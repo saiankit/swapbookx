@@ -122,6 +122,7 @@ const BookDetails = ({
           <div className="flex flex-col items-start">
             <span className="my-0.5 text-gray-500">Return Date</span>
             <DatePicker
+            className='border-red-500'
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
               selected={returnDate}

@@ -119,6 +119,12 @@ const LoginPage = () => {
               REGISTER
             </button>
           </Link>
+
+          <Link to="/adminLogin">
+            <button className="mt-4 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-400 hover:bg-slate-500 ">
+              ADMIN LOGIN
+            </button>
+          </Link>
         </form>
       </div>
     </div>

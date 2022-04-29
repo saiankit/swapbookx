@@ -15,6 +15,7 @@ import SignUpPage from './pages/signUpPage'
 import BookDetails from './pages/bookDetail'
 import UserProfile from './pages/userProfile'
 import AdminPage from './pages/admin'
+import AdminLogin from './pages/adminLogin'
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Route element={<BookDetails />} path="/borrower/book/:bookID" />
         <Route element={<UserProfile/>} path="/profile" />
         <Route element={<AdminPage/>} path="/admin" />
+        <Route element={<AdminLogin/>} path="/adminLogin" />
       </Routes>
     </>
   )
