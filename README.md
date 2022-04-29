@@ -1,6 +1,12 @@
 ## swapbookx
 
+![1](Screenshots/main.png)
 Mutual Book Sharing made easy
+
+| ![1](Screenshots/1.png) | ![1](Screenshots/2.png) |
+| ----------------------- | ----------------------- |
+| ![1](Screenshots/3.png) | ![1](Screenshots/4.png) |
+| ![1](Screenshots/5.png) | ![1](Screenshots/6.png) |
 
 #### How to use the app locally on your machine ?
 

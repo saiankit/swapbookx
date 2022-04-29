@@ -7,10 +7,11 @@ import Sidebar from '../components/sidebar'
 function BorrowerDashboard() {
   const [search, setNewSearch] = useState('')
   const [data, setData] = useState([])
-const userID = localStorage.getItem('userID')
+
   useEffect(() => {
     async function fetchBooks() {
       const result = await axios('http://localhost:8080/api/books/')
+
       setData(result.data)
     }
     fetchBooks()
@@ -19,7 +20,6 @@ const userID = localStorage.getItem('userID')
   const handleSearchChange = (e) => {
     setNewSearch(e.target.value)
   }
-
 
   const filtered = !search
     ? data
